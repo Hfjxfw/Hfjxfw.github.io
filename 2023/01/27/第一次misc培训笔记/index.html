@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="常见的编码字母表打乱rot13特征： 只对字母进行编码，把26个英文字母前13个和后13个对调，其中非字母形式不做修改 工具： 网络管理员在线工具 - Rot13 ROT5、ROT13、ROT18、ROT47位移编码 凯撒密码（有秘钥可枚举）特征： 向后移动26个英文字母（k个字母）加密  工具： 凯撒(Caesar)加密&#x2F;解密 - Bugku CTF 例题 题目：oknqdbqmoq{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常见的编码字母表打乱rot13特征： 只对字母进行编码，把26个英文字母前13个和后13个对调，其中非字母形式不做修改 工具： 网络管理员在线工具 - Rot13 ROT5、ROT13、ROT18、ROT47位移编码 凯撒密码（有秘钥可枚举）特征： 向后移动26个英文字母（k个字母）加密  工具： 凯撒(Caesar)加密&#x2F;解密 - Bugku CTF 例题 题目：oknqdbqmoq{">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271805538.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271805485.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806587.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806224.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806752.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271807075.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271807321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271808024.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271808545.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810578.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810775.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810175.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811492.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811610.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811169.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811299.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811946.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271812486.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816145.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816203.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816543.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817249.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817463.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817925.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817572.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271818697.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821645.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821148.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821073.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821392.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271822282.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821338.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271822868.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823834.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823375.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823671.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823049.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827694.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827975.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271828839.png">
+<meta property="article:published_time" content="2023-01-27T09:47:57.995Z">
+<meta property="article:modified_time" content="2023-01-27T10:28:59.016Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271805538.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-第一次misc培训笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T09:47:57.995Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="常见的编码"><a href="#常见的编码" class="headerlink" title="常见的编码"></a>常见的编码</h1><h2 id="字母表打乱"><a href="#字母表打乱" class="headerlink" title="字母表打乱"></a>字母表打乱</h2><h2 id="rot13"><a href="#rot13" class="headerlink" title="rot13"></a>rot13</h2><p>特征：</p>
+<p>只对字母进行编码，把26个英文字母前13个和后13个对调，其中非字母形式不做修改</p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="http://www.mxcz.net/tools/rot13.aspx">网络管理员在线工具 - Rot13</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">ROT5、ROT13、ROT18、ROT47位移编码</a></p>
+<h2 id="凯撒密码（有秘钥可枚举）"><a href="#凯撒密码（有秘钥可枚举）" class="headerlink" title="凯撒密码（有秘钥可枚举）"></a>凯撒密码（有秘钥可枚举）</h2><p>特征：</p>
+<p>向后移动26个英文字母（k个字母）加密</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271805538.png" alt="img"></p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/caesar">凯撒(Caesar)加密&#x2F;解密 - Bugku CTF</a></p>
+<p>例题</p>
+<p>题目：oknqdbqmoq{kag_tmhq_xqmdzqp_omqemd_qzodkbfuaz}</p>
+<p>根据题目猜测可能是凯撒密码，但不知道偏移多少位，采取枚举</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271805485.png" alt="img"></p>
+<h2 id="文字倒序排列"><a href="#文字倒序排列" class="headerlink" title="文字倒序排列"></a>文字倒序排列</h2><p>工具：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/zh/daoxu/">文字倒序工具,在线文字倒序</a></p>
+<p>题目：}wohs.ftc{galf</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806587.png" alt="img"></p>
+<h2 id="埃特巴什码"><a href="#埃特巴什码" class="headerlink" title="埃特巴什码"></a>埃特巴什码</h2><p>特征：</p>
+<p>常文A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+<p>密文Z Y X W V U T S R Q P O N M L K J I H G F E D C B A</p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="http://www.hiencode.com/atbash.html">CTF在线工具-在线埃特巴什码加密|在线埃特巴什码解密|埃特巴什码算法|Atbash Cipher</a></p>
+<h1 id="数字打乱"><a href="#数字打乱" class="headerlink" title="数字打乱"></a>数字打乱</h1><h2 id="rot5"><a href="#rot5" class="headerlink" title="rot5"></a>rot5</h2><p>特征：ROT5：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字</p>
+<p>工具：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">ROT5、ROT13、ROT18、ROT47位移编码</a></p>
+<h1 id="字母和数字"><a href="#字母和数字" class="headerlink" title="字母和数字"></a>字母和数字</h1><p>特征：</p>
+<p>md5<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8A%A0%E5%AF%86&spm=1001.2101.3001.7020">加密</a>后是16位或者32位的字符，由字母和数字组成，字母大小写统一</p>
+<p>工具：<a target="_blank" rel="noopener" href="https://www.somd5.com/">MD5免费在线解密破解_MD5在线加密-SOMD5</a></p>
+<p>题目</p>
+<p>a8db1d82db78ed452ba0882fb9554fc</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\03028a28a0117a108b24be63a08533dd.png)</p>
+<h1 id="字符加字母和数字打乱"><a href="#字符加字母和数字打乱" class="headerlink" title="字符加字母和数字打乱"></a>字符加字母和数字打乱</h1><h2 id="rot47"><a href="#rot47" class="headerlink" title="rot47"></a>rot47</h2><p>特征：ROT47：对数字、字母、常用符号对照ascii编码进行位置替换，替换前47位</p>
+<p>工具：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">ROT5、ROT13、ROT18、ROT47位移编码</a></p>
+<h1 id="有密钥"><a href="#有密钥" class="headerlink" title="有密钥"></a>有密钥</h1><h2 id="serpent蛇密码"><a href="#serpent蛇密码" class="headerlink" title="serpent蛇密码"></a>serpent蛇密码</h2><p>工具：<a target="_blank" rel="noopener" href="http://serpent.online-domain-tools.com/">Serpent Encryption – Easily encrypt or decrypt strings or files</a></p>
+<p>例题</p>
+<p>题目：得到一个.dat文件</p>
+<p>把他拉到<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=winHex&spm=1001.2101.3001.7020">winHex</a>解出来是乱码。</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806224.png" alt="img"></p>
+<p>用serpent对称解密，密钥就是压缩包的密钥</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806752.png" alt="img"></p>
+<h2 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h2><p>特征：古密码使用秘钥的，按秘钥移动26个英文字母</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271806197.png" alt="img"></p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/weijiniyamima.php">维吉尼亚密码在线加密解密 - 千千秀字</a></p>
+<h1 id="有无秘钥都可"><a href="#有无秘钥都可" class="headerlink" title="有无秘钥都可"></a>有无秘钥都可</h1><h2 id="Rabbit密码"><a href="#Rabbit密码" class="headerlink" title="Rabbit密码"></a>Rabbit密码</h2><p>特征：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271807075.png" alt="img"></p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt_rabbit.html">在线Rabbit加密 | Rabbit解密- 在线工具</a></p>
+<p>例题：</p>
+<p>明文I Love You小可爱无密匙加密后密文为U2FsdGVkX1&#x2F;ouFei55jKdzY1fWNS4jxHVNf&#x2F;AfKWjnBrOGY&#x3D;</p>
+<p>明文I Love You 521无密匙加密后密文为U2FsdGVkX19DvuEo5PvBA8TuLrM2t+EZBvUkzlAa</p>
+<p>明文I Love You 521密匙为666加密后密文为U2FsdGVkX18w6vxXxux&#x2F;ivRVwo3xMzTxmUyk7cHz</p>
+<h1 id="有秘钥加打乱顺序"><a href="#有秘钥加打乱顺序" class="headerlink" title="有秘钥加打乱顺序"></a>有秘钥加打乱顺序</h1><h2 id="1-栏杆密码"><a href="#1-栏杆密码" class="headerlink" title="1.栏杆密码"></a>1.栏杆密码</h2><p><strong>特征：</strong></p>
+<p>所谓栅栏密码，就是把要加密的明文分成N个一组，然后把每组的第1个字连起来，形成一段无规律的话。</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271807321.png" alt="img"></p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="http://www.metools.info/code/fence155.html">栅栏密码_栅栏密码加密解密【基础型】-ME2在线工具</a></p>
+<p>例题：</p>
+<p>根据提示猜测栏杆数可能是4，利用在线栏杆解密得出</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\7fcc8eda83761e297ca8dd52fbe2d782.png)</p>
+<h3 id="3-1-1栏杆密码变种W型"><a href="#3-1-1栏杆密码变种W型" class="headerlink" title="3.1.1栏杆密码变种W型"></a>3.1.1栏杆密码变种W型</h3><p><strong>特征</strong></p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271808024.png" alt="img"></p>
+<p>工具：</p>
+<p><a target="_blank" rel="noopener" href="http://www.atoolbox.net/Tool.php?Id=777">栅栏密码加密&#x2F;解密【W型】 - 一个工具箱 - 好用的在线工具都在这里！</a></p>
+<p>例题：</p>
+<p>ccehgyaefnpeoobe{lcirg}epriec_ora_g</p>
+<p>1.看到密文里有flag不过是被打乱的推测可能是栏杆密码</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\539b28ae78baa29dc155de0e252bd816.png)</p>
+<h1 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h1><h2 id="1-两个符号组成"><a href="#1-两个符号组成" class="headerlink" title="1.两个符号组成"></a>1.两个符号组成</h2><h3 id="摩斯密码"><a href="#摩斯密码" class="headerlink" title="摩斯密码"></a>摩斯密码</h3><p><strong>特征：</strong></p>
+<p>发现有两种符号或文字推测是摩斯密码利用在线工具解密</p>
+<p><strong>工具：</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.all-tool.cn/Tools/morse/">http://www.all-tool.cn/Tools/morse/</a></p>
+<p>例题：</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\7f73a05b1548c1c5fa6222e701f79148.png)</p>
+<h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a>培根密码</h3><p>特征：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271808545.png" alt="img"></p>
+<p>例题：</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\4b0d95ace201319f0612ce329b394873.png)</p>
+<h2 id="18-个符号组成"><a href="#18-个符号组成" class="headerlink" title="18 个符号组成"></a>18 个符号组成</h2><h3 id="JJEncode编码"><a href="#JJEncode编码" class="headerlink" title="JJEncode编码"></a><strong>JJEncode编码</strong></h3><p>特征：大量 $、_ 符号，大量重复的自定义变量</p>
+<p><a href=""></a>!+,&quot;$.:;_{}~&#x3D;</p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810578.png" alt="img"></p>
+<h2 id="八个符号组成"><a href="#八个符号组成" class="headerlink" title="八个符号组成"></a>八个符号组成</h2><h3 id="jother编码"><a href="#jother编码" class="headerlink" title="jother编码"></a>jother编码</h3><p><strong>特征：只用</strong>**! + ( ) [ ] { }**<strong>这八个字符就能完成对任意字符串的编码。也可在F12中解密执行</strong></p>
+<p>工具：<a target="_blank" rel="noopener" href="http://www.hiencode.com/jsfuck.html">CTF在线工具-在线JSfuck加密|在线JSfuck解密|JSfuck|JSfuck原理|JSfuck算法</a></p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810775.png" alt="img"></p>
+<h3 id="Brainfuck"><a href="#Brainfuck" class="headerlink" title="Brainfuck"></a>Brainfuck</h3><p>特征：用&gt; &lt; + - . , [ ]八种符号，有大量的+号</p>
+<p>题目：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271810175.png" alt="img"></p>
+<h2 id="6个符号组成"><a href="#6个符号组成" class="headerlink" title="6个符号组成"></a>6个符号组成</h2><h3 id="JSFuck编码"><a href="#JSFuck编码" class="headerlink" title="JSFuck编码"></a>JSFuck编码</h3><p>特征：<a href=""></a>!+组成</p>
+<p>例题：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811492.png" alt="img"></p>
+<h2 id="2-由看起来像字符串组成"><a href="#2-由看起来像字符串组成" class="headerlink" title="2.由看起来像字符串组成"></a>2.由看起来像字符串组成</h2><h3 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h3><p>特征：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811610.png" alt="img"></p>
+<p>例题：</p>
+<p>![img](D:\My Blog\source_posts\第一次misc培训笔记.assets\47003fa77577e71f3710a2aed3727bc5.png)</p>
+<h3 id="Quoted-printable-编码"><a href="#Quoted-printable-编码" class="headerlink" title="Quoted-printable 编码"></a>Quoted-printable 编码</h3><p>特征：</p>
+<p>一个等号”&#x3D;”后跟随两个十六进制数字(0–9或A–F)表示该字节的数值</p>
+<p>工具：<a target="_blank" rel="noopener" href="https://wtool.com.cn/quoted.html">在线 Quoted-printable 解码编码 - 在线工具网</a></p>
+<p>题目</p>
+<p>例题：&#x3D;E7&#x3D;94&#x3D;A8&#x3D;E4&#x3D;BD&#x3D;A0&#x3D;E9&#x3D;82&#x3D;A3&#x3D;E7&#x3D;81&#x3D;AB&#x3D;E7&#x3D;83&#x3D;AD&#x3D;E7&#x3D;9A&#x3D;84&#x3D;E5&#x3D;98&#x3D;B4&#x3D;E5&#x3D;94&#x3D;87&#x3D;E8&#x3D;AE&#x3D;A9&#x3D;E6&#x3D;88&#x3D;91&#x3D;E5&#x3D;9C&#x3D;A8&#x3D;E5&#x3D;8D&#x3D;88&#x3D;E5&#x3D;A4&#x3D;9C&#x3D;E9&#x3D;87&#x3D;8C&#x3D;E6&#x3D;97&#x3D;A0&#x3D;E5&#x3D;B0&#x3D;BD&#x3D;E7&#x3D;9A&#x3D;84&#x3D;E9&#x3D;94&#x3D;80&#x3D;E9&#x3D;AD&#x3D;82</p>
+<h3 id="ook密码"><a href="#ook密码" class="headerlink" title="ook密码"></a>ook密码</h3><p>特征：ook密码中有大量ook</p>
+<p>工具：[Brainfuck&#x2F;Ook! Obfuscation&#x2F;Encoding <a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">splitbrain.org]</a></p>
+<p>题目：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811169.png" alt="img"></p>
+<h2 id="3-颜文字符号"><a href="#3-颜文字符号" class="headerlink" title="3.颜文字符号"></a>3.颜文字符号</h2><h3 id="颜文字js加密AAEncode"><a href="#颜文字js加密AAEncode" class="headerlink" title="颜文字js加密AAEncode"></a>颜文字js加密AAEncode</h3><p>特征：</p>
+<p><strong>一堆颜文字构成的js代码</strong></p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811299.png" alt="img"></p>
+<p>工具：<a target="_blank" rel="noopener" href="https://utf-8.jp/public/aaencode.html">https://utf-8.jp/public/aaencode.html</a></p>
+<h1 id="1-传统猪圈密码"><a href="#1-传统猪圈密码" class="headerlink" title="1.传统猪圈密码"></a>1.传统猪圈密码</h1><p>猪圈密码又称为亦称朱高密码、共济会暗号、共济会密码或共济会员密码；是一种以特定符号来替换字母的加密方式<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271811946.png" alt="image"><br>在线解密网址：<a target="_blank" rel="noopener" href="http://moersima.00cha.net/zhuquan.asp">http://moersima.00cha.net/zhuquan.asp</a><br>该密码由于多数出现于一些规模较小的比赛签到题上。</p>
+<h1 id="2-变种猪圈1"><a href="#2-变种猪圈1" class="headerlink" title="2.变种猪圈1"></a>2.变种猪圈1</h1><p>此变种每个图案上均有一小黑点，区别就在于黑点的位置不同。<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271812486.png" alt="image"></p>
+<h1 id="3-变种猪圈2"><a href="#3-变种猪圈2" class="headerlink" title="3.变种猪圈2"></a>3.变种猪圈2</h1><p>此变种与传统猪圈密码的区别在于第十到第二十二个字母的摆放样式的不同。<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816145.png" alt="image"><br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816203.png" alt="image"></p>
+<h1 id="4-圣堂武士密码（猪圈密码的变种）"><a href="#4-圣堂武士密码（猪圈密码的变种）" class="headerlink" title="4.圣堂武士密码（猪圈密码的变种）"></a>4.圣堂武士密码（猪圈密码的变种）</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816543.png" alt="image"></p>
+<h1 id="5-标准银河字母加密"><a href="#5-标准银河字母加密" class="headerlink" title="5.标准银河字母加密"></a>5.标准银河字母加密</h1><p>出自于游戏《指挥官基恩》系列<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271816368.png" alt="image"></p>
+<h1 id="6-跳舞的小人"><a href="#6-跳舞的小人" class="headerlink" title="6.跳舞的小人"></a>6.跳舞的小人</h1><p>出自于《福尔摩斯探案集》跳舞的小人<br>![image](D:\My Blog\source_posts\第一次misc培训笔记.assets\2643789-20220412213938584-398264519.png)<br>码表：<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817249.png" alt="image"></p>
+<h1 id="7-旗语密码"><a href="#7-旗语密码" class="headerlink" title="7.旗语密码"></a>7.旗语密码</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817463.png" alt="image"></p>
+<h1 id="8-国际船用信号旗密码"><a href="#8-国际船用信号旗密码" class="headerlink" title="8.国际船用信号旗密码"></a>8.国际船用信号旗密码</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817925.png" alt="image"></p>
+<h1 id="9-古埃及象形文字"><a href="#9-古埃及象形文字" class="headerlink" title="9.古埃及象形文字"></a>9.古埃及象形文字</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271817572.png" alt="image"><br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271818697.png" alt="image"></p>
+<h1 id="10-夏多密码（又称曲折密码）"><a href="#10-夏多密码（又称曲折密码）" class="headerlink" title="10.夏多密码（又称曲折密码）"></a>10.夏多密码（又称曲折密码）</h1><p>来源：作者麦克斯韦·格兰特在中篇小说《死亡之链》塑造夏多这一英雄人物中所自创的密码<br>整个夏多密码由两部分组成</p>
+<ul>
+<li>码表<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821645.png" alt="image"></li>
+<li>旋转方向<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821148.png" alt="image"><br>1.向上旋转 2.向右旋转 3.向下旋转 4.向左旋转<br>最后四个符号可以出现在密文中的任意位置，它代表着在此之后的密文需要向什么方向旋转</li>
+</ul>
+<h1 id="11-狄德拉字符对照表"><a href="#11-狄德拉字符对照表" class="headerlink" title="11.狄德拉字符对照表"></a>11.狄德拉字符对照表</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821073.png" alt="image"></p>
+<h1 id="12-外星人密码"><a href="#12-外星人密码" class="headerlink" title="12.外星人密码"></a>12.外星人密码</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821392.png" alt="image"></p>
+<h1 id="13-克林贡语密码"><a href="#13-克林贡语密码" class="headerlink" title="13.克林贡语密码"></a>13.克林贡语密码</h1><p>来源：星际迷航<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271822282.png" alt="image"></p>
+<h1 id="14-多斯拉克语字母表"><a href="#14-多斯拉克语字母表" class="headerlink" title="14.多斯拉克语字母表"></a>14.多斯拉克语字母表</h1><p>来源：权力的游戏<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271821338.png" alt="image"></p>
+<h1 id="15-模拟语"><a href="#15-模拟语" class="headerlink" title="15.模拟语"></a>15.模拟语</h1><p>来源：模拟人生4<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271822868.png" alt="image"></p>
+<h1 id="16-海利亚语"><a href="#16-海利亚语" class="headerlink" title="16.海利亚语"></a>16.海利亚语</h1><p>来源：塞尔达传说<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823834.png" alt="image"></p>
+<h1 id="17-樊凡语"><a href="#17-樊凡语" class="headerlink" title="17.樊凡语"></a>17.樊凡语</h1><p>来源：翡翠帝国<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823375.png" alt="image"></p>
+<h1 id="18-神奇宝贝密码"><a href="#18-神奇宝贝密码" class="headerlink" title="18.神奇宝贝密码"></a>18.神奇宝贝密码</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823671.png" alt="image"></p>
+<h1 id="19-音符加密"><a href="#19-音符加密" class="headerlink" title="19.音符加密"></a>19.音符加密</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271823049.png" alt="image"><br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827694.png" alt="image"></p>
+<h1 id="20-未知加密"><a href="#20-未知加密" class="headerlink" title="20.未知加密"></a>20.未知加密</h1><p>只找到一张码表，不知道叫什么名字<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827246.png" alt="image"></p>
+<h1 id="21-Covenant字体"><a href="#21-Covenant字体" class="headerlink" title="21.Covenant字体"></a>21.Covenant字体</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271827975.png" alt="image"></p>
+<h1 id="22-费兹象形文字"><a href="#22-费兹象形文字" class="headerlink" title="22.费兹象形文字"></a>22.费兹象形文字</h1><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271828839.png" alt="image"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" data-id="cldedtl5w0000ds84h6v34ww1" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第二周web学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/">第二周web学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">第一次web培训笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
