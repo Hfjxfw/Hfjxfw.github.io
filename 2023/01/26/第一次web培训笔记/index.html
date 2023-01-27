@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046636.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270047839.png">
 <meta property="article:published_time" content="2023-01-26T15:25:15.000Z">
-<meta property="article:modified_time" content="2023-01-26T16:54:25.453Z">
+<meta property="article:modified_time" content="2023-01-27T08:01:51.927Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046525.png">
@@ -116,11 +116,11 @@
 <p><strong>内容</strong>：元素的内容，本例中就是所输入的文本本身。</p>
 <p><strong>元素</strong>：开始标签、结束标签与内容相结合，便是一个完整的元素。 <img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046696.png" alt="img"></p>
 <p>元素也可以有属性（Attribute）： <img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046498.png" alt="img"></p>
-<p>属性应该包含：</p>
+<p><strong>属性应该包含：</strong></p>
 <ol>
-<li>在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格符。</li>
-<li>属性的名称，并接上一个等号。</li>
-<li>由引号所包围的属性值。</li>
+<li><strong>在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格符。</strong></li>
+<li><strong>属性的名称，并接上一个等号。</strong></li>
+<li><strong>由引号所包围的属性值。</strong></li>
 </ol>
 <p>比如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/style.css&quot;&gt;</span><br></pre></td></tr></table></figure>
@@ -149,7 +149,7 @@
 <blockquote>
 <p><a href="www.baidu.com">这是一个超链接元素，此处定义了他的两个属性</a></p>
 </blockquote>
-<p>一个完整的 HTML 页面的：</p>
+<p><strong>一个完整的 HTML 页面的：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;我的测试站点&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;p&gt;这是我的页面&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p><code>&lt;!DOCTYPE html&gt;</code>声明文档类型</p>
@@ -280,7 +280,7 @@
 
 <h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p><strong>JavaScript是一门弱类型的语言</strong></p>
 <p>JavaScript <strong>Python</strong></p>
-<p>JavaScript 程序的执行单位为行（line），也就是一行一行地执行。一般情况下，每一行就是一个语句。</p>
+<p>JavaScript 程序的执行单位为行（line），<strong>也就是一行一行地执行。一般情况下，每一行就是一个语句。</strong></p>
 <p>语句（statement）是为了完成某种任务而进行的操作，比如下面就是一行赋值语句。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 3;</span><br></pre></td></tr></table></figure>
 
@@ -426,21 +426,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 0</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，<code>n --&gt; 0</code>实际上会当作<code>n-- &gt; 0</code>，因此输出2、1、0。</p>
-<h2 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h2><p>JavaScript 使用大括号，将多个相关的语句组合在一起，称为“区块”（block）。</p>
-<p>对于<code>var</code>命令来说，JavaScript 的区块不构成单独的作用域（scope）。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a // 1</span><br></pre></td></tr></table></figure>
-
-<p>上面代码在区块内部，使用<code>var</code>命令声明并赋值了变量<code>a</code>，然后在区块外部，变量<code>a</code>依然有效，区块对于<code>var</code>命令不构成单独的作用域，与不使用区块的情况没有任何区别。在 JavaScript 语言中，单独使用区块并不常见，区块往往用来构成其他更复杂的语法结构，比如<code>for</code>、<code>if</code>、<code>while</code>、<code>function</code>等。</p>
-<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>JavaScript 提供<code>if</code>结构和<code>switch</code>结构，完成条件判断，即只有满足预设的条件，才会执行相应的语句。</p>
-<h3 id="if-结构"><a href="#if-结构" class="headerlink" title="if 结构"></a>if 结构</h3><p><code>if</code>结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，<code>true</code>表示真，<code>false</code>表示<code>伪</code>。</p>
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><h3 id="if-结构"><a href="#if-结构" class="headerlink" title="if 结构"></a>if 结构</h3><p><code>if</code>结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，<code>true</code>表示真，<code>false</code>表示<code>伪</code>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (布尔值)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语句;</span><br></pre></td></tr></table></figure>
@@ -644,6 +630,7 @@
 <p> click</p>
 <p>作用：你要求登录的服务 会返回一个set-cookie的标头 </p>
 <p>可以通过<code>document</code>这个根节点获取cookie属性</p>
+<h2 id="学习小结"><a href="#学习小结" class="headerlink" title="学习小结"></a>学习小结</h2><p>这里做一个学习小结。第一次我们web的入门教学。我主要学习到的内容就是关于HTML。CSS。js语言，以及它们的基本作用。而且通过课后题目的练习。可以基本读懂三种语言，和它所表达的基本含义。学习到的内容主要有：HTML它的基本组成结构，这是我们读懂网页的源代码的一个基本内容。然后呢，CSS语言。就是主要学习了他对于网页布局构型各个部分的作用用途。以及他的基本写法和语法结构。哦，这里强调一个重点就是<strong>三种语言可以实现HTML内联。</strong>对于js是语言的话，它是web的一门编程语言。这节课主要就学习了它的基本的语法。而重点的内容就是要放在条件语句中。&#x3D;&#x3D;，&#x3D;&#x3D;&#x3D;，符号的判断。以及它的存在时的一些类型转化规律。然后呢，通过题目练习，会发现js语言中包含着大量的函数。所以接下来需要再写一篇文章来整理一下，js语言里面常用到的函数及它的作用啊，然后最后学习的内容就是Dom。Dom由节点组成。就是它可以组成一个节点树。啊，最后就看了一个简单的反射型x ss实力。而是一个用HTML写成的网页。这周学习的内容就是那么多。主要涉及到的方面还是在代码审计这一块。啊，我觉得重心呀，还需要放在HTML和js。啊，后面会学到PHP。这个也是一个重点。然后在本次学习中，我收获到的其实就是可以读懂三种语言。然后下然后下载了phpStorm。和VSC。并且会基本会运用这两个编译器来书写，书写代码。</p>
 
       
     </div>
@@ -657,6 +644,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第二周web学习笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2023/01/23/%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BD%9C%E4%B8%9Awp/" id="article-nav-older" class="article-nav-link-wrap">
@@ -697,6 +693,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
+          </li>
         
           <li>
             <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">第一次web培训笔记</a>

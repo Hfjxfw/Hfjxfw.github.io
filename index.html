@@ -71,6 +71,200 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第二周web学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T08:04:27.000Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><p>PHP是一种服务器端技术 ， 这意味着它不能在客户端运行， 也就是说不能在Web浏览器中运行。 但是Web浏览器能够理解HTML（以及JavaScript和CSS）</p>
+<p>标准HTML文档和PHP文档之间有3个主要的不同之处。 首先， 保存PHP脚本时必须使用.php 扩展名（例如， index.php） 。 其次， 必须把PHP代码放置在<?php 和?> 标签之间  ，<strong>index.php用于存储网页源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;&lt;h1&gt;This is HTML.&lt;/h1&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    PHP code!</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;p&gt;More HTML&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>PHP脚本必须运行在启用了PHP的Web服务器上（而HTML页面可以在任何计算机中浏览） 。   </p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>print_r() 函数提供了一种显示变量值的简单方式  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$value_name</span>);</span><br></pre></td></tr></table></figure>
+
+<p>创建正确的变量名， 必须遵循以下规则：</p>
+<ul>
+<li>所有的变量名必须以美元符号（<code>$</code>） 开头；</li>
+<li>在美元符号后的第一个字符必须为字母（A～Z， a～z） 或者下划线（_ ） ， 不能使用数字；</li>
+<li>变量名剩下的部分可以包含任何数量的字母、 数字和下划线组合；</li>
+<li>变量名中不能出现空格（通常使用下划线进行文字分隔） ；</li>
+<li>变量名必须唯一；</li>
+<li>变量名区分大小写</li>
+</ul>
+<h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><ul>
+<li>String（字符串）</li>
+<li>Integer（整型）</li>
+<li>Float（浮点型）</li>
+<li>Boolean（布尔型）</li>
+<li>Array（数组）</li>
+<li>Object（对象）</li>
+<li>NULL（空值）</li>
+<li>Resource（资源类型）</li>
+</ul>
+<h4 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h4><p>在PHP中数值类型分为两种： 整型和浮点型  </p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>一个字符串是一对单引号（’ ） 或者双引号（” ） 引用的任意数量的字符。 字符串能够包含字母、 数字、 符号和空格的任何组合， 它还能够包含变量。  </p>
+<p>单引号串和双引号串在PHP中的处理是不相同的。双引号串中的内容可以被解释而且替换，而单引号串中的内容总被认为是普通字符。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$v</span>=<span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;双引号下的<span class="subst">$v</span>\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;单引号下的$v\n&#x27;</span>;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//双引号下的123</span></span><br><span class="line"><span class="comment">//单引号下的$v\n</span></span><br></pre></td></tr></table></figure>
+
+<p>在 PHP 中，只有一个字符串运算符。</p>
+<p>并置运算符 (.) 用于把两个字符串值连接起来。</p>
+<p>下面的实例演示了如何将两个字符串变量连接在一起：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$txt1</span>=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="variable">$txt2</span>=<span class="string">&quot;What a nice day!&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$txt1</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$txt2</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>不是C语言中的定长数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">1000</span>];<span class="comment">//定长的 长度为1000</span></span><br></pre></td></tr></table></figure>
+
+<p>不同于C语言中的数组，PHP中数组的概念等同于python中的dict(字典)</p>
+<p>数组使用键来创建和检索它们保存的值， 其结果构成为一系列<strong>键-值对</strong>， 看上去像是一个两列的数据表。   </p>
+<p>数组中的值都可以是任何变量类型（字符串、 数值或者其他类型）  </p>
+<p>数组也有名称， 并且使用相同的命名规则，这些规则如下所示：</p>
+<ul>
+<li><strong>以美元符号开头；</strong></li>
+<li><strong>紧接开头符号之后为一个字母或者下划线；</strong></li>
+<li><strong>以字符、 数值或者下划线的任意组合结尾。</strong></li>
+</ul>
+<p>数组有索引数组和关联数组两种。索引数组用数字作为数组的键，而关联数组用字符串作为数组的键</p>
+<p>创建数组通过<code>array()</code>函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="variable">$a1</span>=<span class="keyword">array</span> (<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;bananas&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>);<span class="comment">//自动生成索引 **和C语言的数组的下标相同从0开始**</span></span><br><span class="line">	<span class="variable">$a2</span>=<span class="keyword">array</span> (<span class="number">1</span> =&gt; <span class="string">&#x27;apples&#x27;</span>, <span class="number">2</span> =&gt; <span class="string">&#x27;bananas&#x27;</span>, <span class="number">3</span> =&gt; <span class="string">&#x27;oranges&#x27;</span>);<span class="comment">//人为为键命名，可以是字符串</span></span><br></pre></td></tr></table></figure>
+
+<p><code>$_GET</code> 和<code>$_POST</code>是两个用于接收http请求中发送的数据的超全局变量数组。相当于一个</p>
+<h3 id="PHP-类型比较"><a href="#PHP-类型比较" class="headerlink" title="PHP 类型比较"></a>PHP 类型比较</h3><p>虽然 PHP 是弱类型语言，但也需要明白变量类型及它们的意义，因为我们经常需要对 PHP 变量进行比较，包含松散和严格比较。</p>
+<ul>
+<li>松散比较：使用两个等号 <strong>&#x3D;&#x3D;</strong> 比较，只比较值，不比较类型。在比较时会发生类型转换，<strong>及1admin&#x3D;&#x3D;1，admin1&#x3D;&#x3D;0</strong></li>
+<li>严格比较：用三个等号 <strong>&#x3D;&#x3D;&#x3D;</strong> 比较，除了比较值，也比较类型。<br><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271654065.png"></li>
+</ul>
+<p>常见题型：结合md5等散列函数进行考察（基本上写一个代码跑跑就出来）</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">返回值类型 函数名(参数<span class="number">1</span> ...)</span><br><span class="line">&#123;</span><br><span class="line">	函数体</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数名称以字母或下划线开头（不能以数字开头）</p>
+<p>创建：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 要执行的代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如需让函数返回一个值，请使用 return 语句。</p>
+<h2 id="PHP-面向对象"><a href="#PHP-面向对象" class="headerlink" title="PHP 面向对象"></a>PHP 面向对象</h2><ul>
+<li><strong>类</strong> − 定义了一件事物（就是对象）的抽象特点。类的定义包含了数据的形式以及对数据的操作。</li>
+<li><strong>对象</strong> − 是类的实例。</li>
+<li><strong>成员变量</strong> − 定义在类内部的变量。该变量的值对外是不可见的，但是可以通过成员函数访问，在类被实例化为对象后，该变量即可成为对象的属性。</li>
+<li><strong>成员函数</strong> − 定义在类的内部，可用于访问对象的数据。</li>
+</ul>
+<p>比如猫和狗有相同的特点：都是动物，那么就可以抽象为一个动物类Animal:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>猫和狗有一部分共有的特点，比如毛色、重量、性别等，这是对象的属性，据此给Animal类添加属性：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="variable">$color</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$weight</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$sex</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>猫和狗也有一部分共有的行为，比如跑动和饮食，据此给Animal类添加函数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="variable">$color</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$weight</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$sex</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;run\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;eat\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类创建后，我们可以使用 <strong>new</strong> 运算符来实例化该类的对象：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="variable">$color</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$weight</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$sex</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;run\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;eat\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$cat</span> = <span class="keyword">new</span> <span class="title class_">Animal</span>();</span><br></pre></td></tr></table></figure>
+
+<p>实际上就是用多个函数构造一个新函数，注意使用语法。</p>
+<p>反序列化</p>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>在 PHP 中，提供了下列循环语句：</p>
+<ul>
+<li><strong>while</strong> - 只要指定的条件成立，则循环执行代码块</li>
+<li><strong>do…while</strong> - 首先执行一次代码块，然后在指定的条件成立时重复这个循环</li>
+<li><strong>for</strong> - 循环执行代码块指定的次数</li>
+<li><strong>foreach</strong> - 根据数组中每个元素来循环代码块 ：类似于C++11 范围for循环</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件)</span><br><span class="line">&#123;</span><br><span class="line">    要执行的代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    要执行的代码;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (条件);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始值; 条件; 增量)</span><br><span class="line">&#123;</span><br><span class="line">    要执行的代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="variable">$array</span> <span class="keyword">as</span> <span class="variable">$value</span>)</span><br><span class="line">&#123;</span><br><span class="line">    要执行代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的实例演示了一个输出给定数组的值的循环：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$x</span>=<span class="keyword">array</span>(<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;Runoob&quot;</span>,<span class="string">&quot;Taobao&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$x</span> <span class="keyword">as</span> <span class="variable">$value</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$value</span> . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的实例演示了一个输出给定数组键与值的循环：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$x</span>=<span class="keyword">array</span>(<span class="number">1</span>=&gt;<span class="string">&quot;Google&quot;</span>, <span class="number">2</span>=&gt;<span class="string">&quot;Runoob&quot;</span>, <span class="number">3</span>=&gt;<span class="string">&quot;Taobao&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$x</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;key  为 &quot;</span> . <span class="variable">$key</span> . <span class="string">&quot;，对应的 value 为 &quot;</span>. <span class="variable">$value</span> . PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="php表单"><a href="#php表单" class="headerlink" title="php表单"></a>php表单</h2><p>PHP 中的 <code>$_GET</code> 和 <code>$_POST</code> 变量用于接收表单中的信息</p>
+<p>receive.php:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;这是<span class="subst">$_GET</span>变量接收到的信息&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;input_get&#x27;</span>];</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;这是<span class="subst">$_GET</span>变量接收到的信息&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;input_post&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>index.html:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">receive.php</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;input_get&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">style</span>=<span class="string">&quot;background-color: red&quot;</span> <span class="attr">action</span>=<span class="string">receive.php</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;input_post&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。</p>
+<p><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</p>
+<p>本地的MySQL服务：多个数据库，每一个数据库下面有若干张数据表</p>
+<p>数据表</p>
+<ul>
+<li>列(col): 具有相同数据类型的数据的集合，表现为对象的属性，常称为字段;值 值域都相同</li>
+<li>行(row): 每一行用来描述某条记录的具体信息，每一行是一条记录;</li>
+<li>值(value): 行的具体信息, 每个值必须与该列的数据类型相同;</li>
+<li><strong>键(key)</strong>: 键的值在当前列中具有唯一性。主键</li>
+</ul>
+<p>SQL增删改查：</p>
+<p>增：<code>INSERT INTO table_name [(field1, field2...)] VALUES (value1,value2...)</code></p>
+<p>删：<code>DELETE FROM table_name [WHERE condition]</code></p>
+<p>改：<code>UPDATE table_name SET field1=value1, field2=value2...</code></p>
+<p>查：<code>SELECT column_name1,column_name2... FROM table_name [WHERE condition] [ORDER BY] [DISTINCT]</code></p>
+<h4 id="AND、OR-和-NOT-运算符"><a href="#AND、OR-和-NOT-运算符" class="headerlink" title="AND、OR 和 NOT 运算符"></a>AND、OR 和 NOT 运算符</h4><p><code>WHERE</code> 子句可以与 <code>AND</code>、<code> 结合使用 OR</code> 和 <code>NOT</code> 运算符。</p>
+<p><code>AND</code> 和 <code>OR</code> 运算符用于根据多个条件过滤记录：</p>
+<ul>
+<li>如果由 <code>AND</code> 分隔的所有条件都为 TRUE，则 <code>AND</code> 运算符会显示一条记录。</li>
+<li>如果由 <code>OR</code> 分隔的任何条件为 TRUE，则 <code>OR</code> 运算符会显示一条记录。</li>
+</ul>
+<p>如果条件不为真，<code>NOT</code> 运算符会显示一条记录。</p>
+<h5 id="AND-语法"><a href="#AND-语法" class="headerlink" title="AND 语法"></a>AND 语法</h5><p>SELECT <em>column1</em>, <em>column2, …</em><br>FROM <em>table_name</em><br>WHERE <em>condition1</em> AND <em>condition2</em> AND <em>condition3 …</em>;</p>
+<h5 id="OR-语法"><a href="#OR-语法" class="headerlink" title="OR 语法"></a>OR 语法</h5><p>SELECT <em>column1</em>, <em>column2, …</em><br>FROM <em>table_name</em><br>WHERE <em>condition1</em> OR <em>condition2</em> OR <em>condition3 …</em>;</p>
+<h5 id="NOT-语法"><a href="#NOT-语法" class="headerlink" title="NOT 语法"></a>NOT 语法</h5><p>SELECT <em>column1</em>, *column2, …*FROM  <em>table_name</em> WHERE NOT <em>condition</em>;</p>
+<p>联合查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> expression1, expression2, ... expression_n</span><br><span class="line"><span class="keyword">FROM</span> tables</span><br><span class="line">[<span class="keyword">WHERE</span> conditions]</span><br><span class="line"><span class="keyword">UNION</span> [<span class="keyword">ALL</span> <span class="operator">|</span> <span class="keyword">DISTINCT</span>]</span><br><span class="line"><span class="keyword">SELECT</span> expression1, expression2, ... expression_n</span><br><span class="line"><span class="keyword">FROM</span> tables</span><br><span class="line">[<span class="keyword">WHERE</span> conditions];</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>SQL注入中常用的数据库(MySQL自带)：<code>information_schema</code></p>
+<p>一个环境下面有多个数据库 数据库里面有多个数据表 每一个数据表都包含若干个字段</p>
+<p>该库中存有所有库的一些相关信息，如<code>TABLES</code>表存放了所有数据库中的所有表名与其对应的数据库名，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271654285.png"></p>
+<p><code>TABLES</code>这个值是<code>information_schema</code>数据库下的一个数据表</p>
+<p><code>COLUMNS</code>表存放了当前环境下所有数据库的列名和其所属的库和表，如图所示</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271655196.png" alt="image-20230119121155710"></p>
+<p>可以看到当前选中的<code>COLUMN_NAME</code>是属于<code>information_schema</code>数据库下<code>COLUMNS</code>数据表中的一个字段名</p>
+<p><code>TABLE_SCHEMA</code>对应数据库名，<code>TABLE_NAME</code>对应表名</p>
+<p>同样的，<code>SCHEMATA</code>表下存放的是所有数据库的名字，<code>SCHEMA_NAME</code>即为库名</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271655300.png" alt="image-20230119121505765"></p>
+<p>在查询语句中查询指定数据库的指定表通过<code>库名.表名</code>的形式来查询</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cldeahe4s0000hw84c11db9un" data-title="第二周web学习笔记" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第一次web培训笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -108,11 +302,11 @@
 <p><strong>内容</strong>：元素的内容，本例中就是所输入的文本本身。</p>
 <p><strong>元素</strong>：开始标签、结束标签与内容相结合，便是一个完整的元素。 <img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046696.png" alt="img"></p>
 <p>元素也可以有属性（Attribute）： <img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301270046498.png" alt="img"></p>
-<p>属性应该包含：</p>
+<p><strong>属性应该包含：</strong></p>
 <ol>
-<li>在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格符。</li>
-<li>属性的名称，并接上一个等号。</li>
-<li>由引号所包围的属性值。</li>
+<li><strong>在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格符。</strong></li>
+<li><strong>属性的名称，并接上一个等号。</strong></li>
+<li><strong>由引号所包围的属性值。</strong></li>
 </ol>
 <p>比如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/style.css&quot;&gt;</span><br></pre></td></tr></table></figure>
@@ -141,7 +335,7 @@
 <blockquote>
 <p><a href="www.baidu.com">这是一个超链接元素，此处定义了他的两个属性</a></p>
 </blockquote>
-<p>一个完整的 HTML 页面的：</p>
+<p><strong>一个完整的 HTML 页面的：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;我的测试站点&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;p&gt;这是我的页面&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p><code>&lt;!DOCTYPE html&gt;</code>声明文档类型</p>
@@ -272,7 +466,7 @@
 
 <h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p><strong>JavaScript是一门弱类型的语言</strong></p>
 <p>JavaScript <strong>Python</strong></p>
-<p>JavaScript 程序的执行单位为行（line），也就是一行一行地执行。一般情况下，每一行就是一个语句。</p>
+<p>JavaScript 程序的执行单位为行（line），<strong>也就是一行一行地执行。一般情况下，每一行就是一个语句。</strong></p>
 <p>语句（statement）是为了完成某种任务而进行的操作，比如下面就是一行赋值语句。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 3;</span><br></pre></td></tr></table></figure>
 
@@ -418,21 +612,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 0</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，<code>n --&gt; 0</code>实际上会当作<code>n-- &gt; 0</code>，因此输出2、1、0。</p>
-<h2 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h2><p>JavaScript 使用大括号，将多个相关的语句组合在一起，称为“区块”（block）。</p>
-<p>对于<code>var</code>命令来说，JavaScript 的区块不构成单独的作用域（scope）。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a // 1</span><br></pre></td></tr></table></figure>
-
-<p>上面代码在区块内部，使用<code>var</code>命令声明并赋值了变量<code>a</code>，然后在区块外部，变量<code>a</code>依然有效，区块对于<code>var</code>命令不构成单独的作用域，与不使用区块的情况没有任何区别。在 JavaScript 语言中，单独使用区块并不常见，区块往往用来构成其他更复杂的语法结构，比如<code>for</code>、<code>if</code>、<code>while</code>、<code>function</code>等。</p>
-<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>JavaScript 提供<code>if</code>结构和<code>switch</code>结构，完成条件判断，即只有满足预设的条件，才会执行相应的语句。</p>
-<h3 id="if-结构"><a href="#if-结构" class="headerlink" title="if 结构"></a>if 结构</h3><p><code>if</code>结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，<code>true</code>表示真，<code>false</code>表示<code>伪</code>。</p>
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><h3 id="if-结构"><a href="#if-结构" class="headerlink" title="if 结构"></a>if 结构</h3><p><code>if</code>结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，<code>true</code>表示真，<code>false</code>表示<code>伪</code>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (布尔值)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语句;</span><br></pre></td></tr></table></figure>
@@ -636,6 +816,7 @@
 <p> click</p>
 <p>作用：你要求登录的服务 会返回一个set-cookie的标头 </p>
 <p>可以通过<code>document</code>这个根节点获取cookie属性</p>
+<h2 id="学习小结"><a href="#学习小结" class="headerlink" title="学习小结"></a>学习小结</h2><p>这里做一个学习小结。第一次我们web的入门教学。我主要学习到的内容就是关于HTML。CSS。js语言，以及它们的基本作用。而且通过课后题目的练习。可以基本读懂三种语言，和它所表达的基本含义。学习到的内容主要有：HTML它的基本组成结构，这是我们读懂网页的源代码的一个基本内容。然后呢，CSS语言。就是主要学习了他对于网页布局构型各个部分的作用用途。以及他的基本写法和语法结构。哦，这里强调一个重点就是<strong>三种语言可以实现HTML内联。</strong>对于js是语言的话，它是web的一门编程语言。这节课主要就学习了它的基本的语法。而重点的内容就是要放在条件语句中。&#x3D;&#x3D;，&#x3D;&#x3D;&#x3D;，符号的判断。以及它的存在时的一些类型转化规律。然后呢，通过题目练习，会发现js语言中包含着大量的函数。所以接下来需要再写一篇文章来整理一下，js语言里面常用到的函数及它的作用啊，然后最后学习的内容就是Dom。Dom由节点组成。就是它可以组成一个节点树。啊，最后就看了一个简单的反射型x ss实力。而是一个用HTML写成的网页。这周学习的内容就是那么多。主要涉及到的方面还是在代码审计这一块。啊，我觉得重心呀，还需要放在HTML和js。啊，后面会学到PHP。这个也是一个重点。然后在本次学习中，我收获到的其实就是可以读懂三种语言。然后下然后下载了phpStorm。和VSC。并且会基本会运用这两个编译器来书写，书写代码。</p>
 
       
     </div>
@@ -825,6 +1006,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
+          </li>
         
           <li>
             <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">第一次web培训笔记</a>
