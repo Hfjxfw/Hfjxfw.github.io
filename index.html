@@ -71,170 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-php语言中的常见函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-第二周web学习笔记-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-01-27T09:14:41.083Z" itemprop="datePublished">2023-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="php语言中的常见函数"><a href="#php语言中的常见函数" class="headerlink" title="php语言中的常见函数"></a>php语言中的常见函数</h1><p><strong>1. 查找字符位置函数</strong></p>
-<p>strpos($str,search,[int]): 查找search在$str中的第一次位置从int开始</p>
-<p>stripos($str,search,[int]): 函数返回字符串在另一个字符串中第一次出现的位置</p>
-<p>strrpos($str,search,[int]): 查找search在$str中的最后一次出现的位置从int</p>
-<p><strong>2. 提取子字符函数(双字节)</strong></p>
-<p>submit($str,int start[,int length]): 从$str中strat位置开始提取[length长度的字符串]。</p>
-<p>strstr($str1,$str2): 从$str1(第一个的位置)搜索$str2并从它开始截取到结束字符串;若没有则返回FALSE。</p>
-<p>stristr() 功能同strstr，只是不区分大小写。</p>
-<p>strrchr() 从最后一次搜索到的字符处返回;用处：取路径中文件名</p>
-<p><strong>3. 替换字符串的PHP字符串函数</strong></p>
-<p>str_replace(search,replace,$str): 从$str中查找search用replace来替换</p>
-<p>str_irreplace(search,replace,$str):</p>
-<p>strtr($str,search,replace): 这个函数中replace不能为””;</p>
-<p>substr_replace($Str,$rep,$start[,length]) $str原始字符串,$rep替换后的新字符串,$start起始位置,$length替换的长度，该项可选</p>
-<p><strong>4. 字符长度</strong></p>
-<p>int strlen($str)： 受字符集限制</p>
-<p><strong>5. 比较字符函数</strong></p>
-<p>int strcmp($str1,$str2): $str1&gt;&#x3D;&lt;$str2分别为正1,0,-1(字符串比较)</p>
-<p>strcasecmp() 同上(不分大小写)</p>
-<p>strnatcmp(“4″,”14″) 按自然排序比较字符串</p>
-<p>strnatcasecmp() 同上，(区分大小写)</p>
-<p><strong>6. 分割成数组的PHP字符串函数</strong></p>
-<p>str_split($str,len): 把$str按len长度进行分割返回数组</p>
-<p>split(search,$str[,int]): 把$str按search字符进行分割返回数组int是分割几次，后面的将不分割</p>
-<p>expload(search,$str[,int])</p>
-<p><strong>7. 去除空格</strong></p>
-<p>ltrim、rtrim、trim</p>
-<p><strong>8. HTML代码有关函数</strong></p>
-<p>nl2br()： 使n转换为。</p>
-<p>strip_tags($str[,’’])： 去除HTML和PHP标记.在$str中所有HTML和PHP代码将被去除，可选参数为html和PHP代码作用是将保留</p>
-<p>如：echo strip_tags($text, ”);</p>
-<p>htmlspecialchars($str[,参数]):页面正常输出HTML代码参数是转换方式</p>
-<p><strong>9. 字符大小写转换的PHP字符串函数</strong></p>
-<p>strtolower($str): 字符串转换为小写</p>
-<p>strtoupper($str): 字符串转换为大写</p>
-<p>ucfirst($str): 将函数的第一个字符转换为大写</p>
-<p>ucwords($str): 将每个单词的首字母转换为大写</p>
-<p><strong>10.数据库相关的</strong></p>
-<p>addslashes($str)：使str内单引号(¹)、双引号(“)、反斜线()与 NUL字符串转换为¹,”,\。</p>
-<p>magic_quotes_gpc &#x3D; On 自动对 get post cookie的内容进行转义</p>
-<p>get_magic_quotes_gpc()检测是否打开magic_quotes_gpc</p>
-<p>stripslashes() 去除字符串中的反斜杠</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>AddSlashes: 字符串加入斜线。</p>
-<p>bin2hex: 二进位转成十六进位。</p>
-<p>Chop: 去除连续空白。</p>
-<p>Chr: 返回序数值的字符。</p>
-<p>chunk_split: 将字符串分成小段。</p>
-<p>convert_cyr_string: 转换成其它字符串。</p>
-<p>crypt: 将字符串用 DES 编码加密。</p>
-<p>echo: 输出字符串。</p>
-<p>explode: 切开字符串。</p>
-<p>flush: 清出输出缓冲区。</p>
-<p>get_meta_tags: 抽出文件所有 meta 标记的资料。</p>
-<p>htmlspecialchars: 将特殊字符转成 HTML 格式。</p>
-<p>htmlentities: 将所有的字符都转成 HTML 字符串。</p>
-<p>implode: 将数组变成字符串。</p>
-<p>join: 将数组变成字符串。</p>
-<p>ltrim: 去除连续空白。</p>
-<p>md5: 计算字符串的 MD5 哈稀。</p>
-<p>nl2br: 将换行字符转成。</p>
-<p>Ord: 返回字符的序数值。</p>
-<p>parse_str: 解析 query 字符串成变量。</p>
-<p>print: 输出字符串。</p>
-<p>printf: 输出格式化字符串。</p>
-<p>quoted_printable_decode： 将 qp 编码字符串转成 8 位字符串。</p>
-<p>QuoteMeta: 加入引用符号。</p>
-<p>rawurldecode: 从 URL 专用格式字符串还原成普通字符串。</p>
-<p>rawurlencode: 将字符串编码成 URL 专用格式。</p>
-<p>setlocale: 配置地域化信息。</p>
-<p>similar_text: 计算字符串相似度。</p>
-<p>soundex: 计算字符串的读音值</p>
-<p>sprintf: 将字符串格式化。</p>
-<p>strchr: 寻找第一个出现的字符。</p>
-<p>strcmp: 字符串比较。</p>
-<p>strcspn: 不同字符串的长度。</p>
-<p>strip_tags: 去掉 HTML 及 PHP 的标记。</p>
-<p>StripSlashes: 去掉反斜线字符。</p>
-<p>strlen: 取得字符串长度。</p>
-<p>strrpos: 寻找字符串中某字符最后出现处。</p>
-<p>strpos: 寻找字符串中某字符最先出现处。</p>
-<p>strrchr: 取得某字符最后出现处起的字符串。</p>
-<p>strrev: 颠倒字符串。</p>
-<p>strspn: 找出某字符串落在另一字符串遮罩的数目。</p>
-<p>strstr: 返回字符串中某字符串开始处至结束的字符串。</p>
-<p>strtok: 切开字符串。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" data-id="cldeb708p000104848nvoc3fy" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-js语言中的常见函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-01-27T09:10:57.753Z" itemprop="datePublished">2023-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="js语言中的常见函数"><a href="#js语言中的常见函数" class="headerlink" title="js语言中的常见函数"></a>js语言中的常见函数</h1><p><strong>基本函数</strong></p>
-<p>(1)<code>alert</code>函数：显示一个警告对话框，包括一个OK按钮。<br>(2)<code>confirm</code>函数：显示一个确认对话框，包括OK、Cancel按钮。<br>(3)<code>escape</code>函数：将字符转换成<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Unicode&spm=1001.2101.3001.7020">Unicode</a>码。<br>(4)<code>eval</code>函数：计算表达式的结果。<br>(5)<code>isNaN</code>函数：测试是(true)否(false)不是一个数字。<br>(6)<code>parseFloat</code>函数：将字符串转换成符点数字形式。<br>(7)<code>parseInt</code>函数：将符串转换成整数数字形式(可指定几进制)。<br>(8)<code>prompt</code>函数：显示一个输入对话框，提示等待用户输入。</p>
-<p>(9)<code>unescape</code>函数：解码由<code>escape</code>函数编码的字符。</p>
-<p><strong>数组函数</strong></p>
-<p>(1)<code>join</code>函数：转换并连接数组中的所有元素为一个字符串。例:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JoinDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, b;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">b = a.<span class="title function_">join</span>(<span class="string">&quot;-&quot;</span>);<span class="comment">//分隔符   </span></span><br><span class="line"><span class="keyword">return</span>(b);<span class="comment">//返回的b==&quot;0-1-2-3-4&quot;   </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
-
-<p>(2)<code>length</code>函数：返回数组的长度。例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LengthDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">l = a.<span class="property">length</span>;  </span><br><span class="line"><span class="keyword">return</span>(l);<span class="comment">//l==5   </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
-
-<p>(3)<code>reverse</code>函数：将数组元素顺序颠倒。例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ReverseDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">l = a.<span class="title function_">reverse</span>();  </span><br><span class="line"><span class="keyword">return</span>(l);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
-
-<p>(4)<code>sort</code>函数：将数组元素重新排序。例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">SortDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&quot;X&quot;</span> ,<span class="string">&quot;y&quot;</span> ,<span class="string">&quot;d&quot;</span>, <span class="string">&quot;Z&quot;</span>, <span class="string">&quot;v&quot;</span>,<span class="string">&quot;m&quot;</span>,<span class="string">&quot;r&quot;</span>);  </span><br><span class="line">l = a.<span class="title function_">sort</span>();  </span><br><span class="line"><span class="keyword">return</span>(l);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-<p><strong>数学函数</strong></p>
-<p>(1)<code>abs</code>函数：即Math.abs(以下同)，返回一个数字的绝对值。<br>(2)<code>acos</code>函数：返回一个数字的反余弦值，结果为0～π弧度(radians)。<br>(3)<code>asin</code>函数：返回一个数字的反正弦值，结果为-π&#x2F;2～π&#x2F;2弧度。<br>(4)<code>atan</code>函数：返回一个数字的反正切值，结果为-π&#x2F;2～π&#x2F;2弧度。<br>(5)<code>atan2</code>函数：返回一个坐标的极坐标角度值。<br>(6)<code>ceil</code>函数：返回一个数字的最小整数值(大于或等于)。<br>(7)<code>cos</code>函数：返回一个数字的余弦值，结果为-1～1。<br>(8)<code>exp</code>函数：返回e(自然对数)的乘方值。<br>(9)<code>floor</code>函数：返回一个数字的最大整数值(小于或等于)。<br>(10)<code>log</code>函数：自然对数函数，返回一个数字的自然对数(e)值。<br>(11)<code>max</code>函数：返回两个数的最大值。<br>(12)<code>min</code>函数：返回两个数的最小值。<br>(13)<code>pow</code>函数：返回一个数字的乘方值。<br>(14)<code>random</code>函数：返回一个0～1的随机数值。<br>(15)<code>round</code>函数：返回一个数字的四舍五入值，类型是整数。<br>(16)<code>sin</code>函数：返回一个数字的正弦值，结果为-1～1。<br>(17)<code>sqrt</code>函数：返回一个数字的平方根值。<br>(18)<code>tan</code>函数：返回一个数字的正切值。</p>
-<p><strong>字符串函数</strong><br>(1)<code>anchor</code>函数：产生一个链接点(anchor)以作超级链接用。<code>anchor</code>函数设定的链接点的名称，另一个函数<code>link</code>设定的<code>URL</code>地址。<br>(2)<code>big</code>函数：将字体加到一号，与…标签结果相同。<br>(3)<code>blink</code>函数：使字符串闪烁，与…标签结果相同。<br>(4)<code>bold</code>函数：使字体加粗，与…标签结果相同。<br>(5)<code>charAt</code>函数：返回字符串中指定的某个字符。<br>(6)<code>fixed</code>函数：将字体设定为固定宽度字体，与…标签结果相同。<br>(7)<code>fontcolor</code>函数：设定字体颜色，与标签结果相同。<br>(8)<code>fontsize</code>函数：设定字体大小，与标签结果相同。<br>(9)<code>indexOf</code>函数：返回字符串中第一个查找到的下标index，从左边开始查找。<br>(10)<code>italics</code>函数：使字体成为斜体字，与…标签结果相同。<br>(11)<code>lastIndexOf</code>函数：返回字符串中第一个查找到的下标index，从右边开始查找。<br>(12)<code>length</code>函数：返回字符串的长度。(不用带括号)<br>(13)<code>link</code>函数：产生一个超级链接，相当于设定的URL地址。<br>(14)<code>small</code>函数：将字体减小一号，与…标签结果相同。<br>(15)<code>strike</code>函数：在文本的中间加一条横线，与…标签结果相同。<br>(16)<code>sub</code>函数：显示字符串为下标字(subscript)。<br>(17)<code>substring</code>函数：返回字符串中指定的几个字符。<br>(18)<code>sup</code>函数：显示字符串为上标字(superscript)。<br>(19)<code>toLowerCase</code>函数：将字符串转换为小写。<br>(20)<code>toUpperCase</code>函数：将字符串转换为大写。<br>(22)<code>trim</code>函数：去掉字符串的前后空格。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" data-id="cldeb708m00000484apdtefpi" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-第二周web学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-01-27T08:04:27.000Z" itemprop="datePublished">2023-01-27</time>
+    <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T09:25:38.000Z" itemprop="datePublished">2023-01-27</time>
 </a>
     
   </div>
@@ -245,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
+      <a class="p-name article-title" href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/">第二周web学习笔记</a>
     </h1>
   
 
@@ -413,7 +253,167 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cldeahe4s0000hw84c11db9un" data-title="第二周web学习笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" data-id="cldebyq1o00005884d2d599fh" data-title="第二周web学习笔记" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php语言中的常见函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T09:14:41.083Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="php语言中的常见函数"><a href="#php语言中的常见函数" class="headerlink" title="php语言中的常见函数"></a>php语言中的常见函数</h1><p><strong>1. 查找字符位置函数</strong></p>
+<p>strpos($str,search,[int]): 查找search在$str中的第一次位置从int开始</p>
+<p>stripos($str,search,[int]): 函数返回字符串在另一个字符串中第一次出现的位置</p>
+<p>strrpos($str,search,[int]): 查找search在$str中的最后一次出现的位置从int</p>
+<p><strong>2. 提取子字符函数(双字节)</strong></p>
+<p>submit($str,int start[,int length]): 从$str中strat位置开始提取[length长度的字符串]。</p>
+<p>strstr($str1,$str2): 从$str1(第一个的位置)搜索$str2并从它开始截取到结束字符串;若没有则返回FALSE。</p>
+<p>stristr() 功能同strstr，只是不区分大小写。</p>
+<p>strrchr() 从最后一次搜索到的字符处返回;用处：取路径中文件名</p>
+<p><strong>3. 替换字符串的PHP字符串函数</strong></p>
+<p>str_replace(search,replace,$str): 从$str中查找search用replace来替换</p>
+<p>str_irreplace(search,replace,$str):</p>
+<p>strtr($str,search,replace): 这个函数中replace不能为””;</p>
+<p>substr_replace($Str,$rep,$start[,length]) $str原始字符串,$rep替换后的新字符串,$start起始位置,$length替换的长度，该项可选</p>
+<p><strong>4. 字符长度</strong></p>
+<p>int strlen($str)： 受字符集限制</p>
+<p><strong>5. 比较字符函数</strong></p>
+<p>int strcmp($str1,$str2): $str1&gt;&#x3D;&lt;$str2分别为正1,0,-1(字符串比较)</p>
+<p>strcasecmp() 同上(不分大小写)</p>
+<p>strnatcmp(“4″,”14″) 按自然排序比较字符串</p>
+<p>strnatcasecmp() 同上，(区分大小写)</p>
+<p><strong>6. 分割成数组的PHP字符串函数</strong></p>
+<p>str_split($str,len): 把$str按len长度进行分割返回数组</p>
+<p>split(search,$str[,int]): 把$str按search字符进行分割返回数组int是分割几次，后面的将不分割</p>
+<p>expload(search,$str[,int])</p>
+<p><strong>7. 去除空格</strong></p>
+<p>ltrim、rtrim、trim</p>
+<p><strong>8. HTML代码有关函数</strong></p>
+<p>nl2br()： 使n转换为。</p>
+<p>strip_tags($str[,’’])： 去除HTML和PHP标记.在$str中所有HTML和PHP代码将被去除，可选参数为html和PHP代码作用是将保留</p>
+<p>如：echo strip_tags($text, ”);</p>
+<p>htmlspecialchars($str[,参数]):页面正常输出HTML代码参数是转换方式</p>
+<p><strong>9. 字符大小写转换的PHP字符串函数</strong></p>
+<p>strtolower($str): 字符串转换为小写</p>
+<p>strtoupper($str): 字符串转换为大写</p>
+<p>ucfirst($str): 将函数的第一个字符转换为大写</p>
+<p>ucwords($str): 将每个单词的首字母转换为大写</p>
+<p><strong>10.数据库相关的</strong></p>
+<p>addslashes($str)：使str内单引号(¹)、双引号(“)、反斜线()与 NUL字符串转换为¹,”,\。</p>
+<p>magic_quotes_gpc &#x3D; On 自动对 get post cookie的内容进行转义</p>
+<p>get_magic_quotes_gpc()检测是否打开magic_quotes_gpc</p>
+<p>stripslashes() 去除字符串中的反斜杠</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>AddSlashes: 字符串加入斜线。</p>
+<p>bin2hex: 二进位转成十六进位。</p>
+<p>Chop: 去除连续空白。</p>
+<p>Chr: 返回序数值的字符。</p>
+<p>chunk_split: 将字符串分成小段。</p>
+<p>convert_cyr_string: 转换成其它字符串。</p>
+<p>crypt: 将字符串用 DES 编码加密。</p>
+<p>echo: 输出字符串。</p>
+<p>explode: 切开字符串。</p>
+<p>flush: 清出输出缓冲区。</p>
+<p>get_meta_tags: 抽出文件所有 meta 标记的资料。</p>
+<p>htmlspecialchars: 将特殊字符转成 HTML 格式。</p>
+<p>htmlentities: 将所有的字符都转成 HTML 字符串。</p>
+<p>implode: 将数组变成字符串。</p>
+<p>join: 将数组变成字符串。</p>
+<p>ltrim: 去除连续空白。</p>
+<p>md5: 计算字符串的 MD5 哈稀。</p>
+<p>nl2br: 将换行字符转成。</p>
+<p>Ord: 返回字符的序数值。</p>
+<p>parse_str: 解析 query 字符串成变量。</p>
+<p>print: 输出字符串。</p>
+<p>printf: 输出格式化字符串。</p>
+<p>quoted_printable_decode： 将 qp 编码字符串转成 8 位字符串。</p>
+<p>QuoteMeta: 加入引用符号。</p>
+<p>rawurldecode: 从 URL 专用格式字符串还原成普通字符串。</p>
+<p>rawurlencode: 将字符串编码成 URL 专用格式。</p>
+<p>setlocale: 配置地域化信息。</p>
+<p>similar_text: 计算字符串相似度。</p>
+<p>soundex: 计算字符串的读音值</p>
+<p>sprintf: 将字符串格式化。</p>
+<p>strchr: 寻找第一个出现的字符。</p>
+<p>strcmp: 字符串比较。</p>
+<p>strcspn: 不同字符串的长度。</p>
+<p>strip_tags: 去掉 HTML 及 PHP 的标记。</p>
+<p>StripSlashes: 去掉反斜线字符。</p>
+<p>strlen: 取得字符串长度。</p>
+<p>strrpos: 寻找字符串中某字符最后出现处。</p>
+<p>strpos: 寻找字符串中某字符最先出现处。</p>
+<p>strrchr: 取得某字符最后出现处起的字符串。</p>
+<p>strrev: 颠倒字符串。</p>
+<p>strspn: 找出某字符串落在另一字符串遮罩的数目。</p>
+<p>strstr: 返回字符串中某字符串开始处至结束的字符串。</p>
+<p>strtok: 切开字符串。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" data-id="cldeb708p000104848nvoc3fy" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-js语言中的常见函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T09:10:57.753Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="js语言中的常见函数"><a href="#js语言中的常见函数" class="headerlink" title="js语言中的常见函数"></a>js语言中的常见函数</h1><p><strong>基本函数</strong></p>
+<p>(1)<code>alert</code>函数：显示一个警告对话框，包括一个OK按钮。<br>(2)<code>confirm</code>函数：显示一个确认对话框，包括OK、Cancel按钮。<br>(3)<code>escape</code>函数：将字符转换成<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Unicode&spm=1001.2101.3001.7020">Unicode</a>码。<br>(4)<code>eval</code>函数：计算表达式的结果。<br>(5)<code>isNaN</code>函数：测试是(true)否(false)不是一个数字。<br>(6)<code>parseFloat</code>函数：将字符串转换成符点数字形式。<br>(7)<code>parseInt</code>函数：将符串转换成整数数字形式(可指定几进制)。<br>(8)<code>prompt</code>函数：显示一个输入对话框，提示等待用户输入。</p>
+<p>(9)<code>unescape</code>函数：解码由<code>escape</code>函数编码的字符。</p>
+<p><strong>数组函数</strong></p>
+<p>(1)<code>join</code>函数：转换并连接数组中的所有元素为一个字符串。例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JoinDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, b;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">b = a.<span class="title function_">join</span>(<span class="string">&quot;-&quot;</span>);<span class="comment">//分隔符   </span></span><br><span class="line"><span class="keyword">return</span>(b);<span class="comment">//返回的b==&quot;0-1-2-3-4&quot;   </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)<code>length</code>函数：返回数组的长度。例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LengthDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">l = a.<span class="property">length</span>;  </span><br><span class="line"><span class="keyword">return</span>(l);<span class="comment">//l==5   </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+
+<p>(3)<code>reverse</code>函数：将数组元素顺序颠倒。例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ReverseDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  </span><br><span class="line">l = a.<span class="title function_">reverse</span>();  </span><br><span class="line"><span class="keyword">return</span>(l);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+
+<p>(4)<code>sort</code>函数：将数组元素重新排序。例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">SortDemo</span>(<span class="params"></span>)  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">var</span> a, l;  </span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&quot;X&quot;</span> ,<span class="string">&quot;y&quot;</span> ,<span class="string">&quot;d&quot;</span>, <span class="string">&quot;Z&quot;</span>, <span class="string">&quot;v&quot;</span>,<span class="string">&quot;m&quot;</span>,<span class="string">&quot;r&quot;</span>);  </span><br><span class="line">l = a.<span class="title function_">sort</span>();  </span><br><span class="line"><span class="keyword">return</span>(l);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p><strong>数学函数</strong></p>
+<p>(1)<code>abs</code>函数：即Math.abs(以下同)，返回一个数字的绝对值。<br>(2)<code>acos</code>函数：返回一个数字的反余弦值，结果为0～π弧度(radians)。<br>(3)<code>asin</code>函数：返回一个数字的反正弦值，结果为-π&#x2F;2～π&#x2F;2弧度。<br>(4)<code>atan</code>函数：返回一个数字的反正切值，结果为-π&#x2F;2～π&#x2F;2弧度。<br>(5)<code>atan2</code>函数：返回一个坐标的极坐标角度值。<br>(6)<code>ceil</code>函数：返回一个数字的最小整数值(大于或等于)。<br>(7)<code>cos</code>函数：返回一个数字的余弦值，结果为-1～1。<br>(8)<code>exp</code>函数：返回e(自然对数)的乘方值。<br>(9)<code>floor</code>函数：返回一个数字的最大整数值(小于或等于)。<br>(10)<code>log</code>函数：自然对数函数，返回一个数字的自然对数(e)值。<br>(11)<code>max</code>函数：返回两个数的最大值。<br>(12)<code>min</code>函数：返回两个数的最小值。<br>(13)<code>pow</code>函数：返回一个数字的乘方值。<br>(14)<code>random</code>函数：返回一个0～1的随机数值。<br>(15)<code>round</code>函数：返回一个数字的四舍五入值，类型是整数。<br>(16)<code>sin</code>函数：返回一个数字的正弦值，结果为-1～1。<br>(17)<code>sqrt</code>函数：返回一个数字的平方根值。<br>(18)<code>tan</code>函数：返回一个数字的正切值。</p>
+<p><strong>字符串函数</strong><br>(1)<code>anchor</code>函数：产生一个链接点(anchor)以作超级链接用。<code>anchor</code>函数设定的链接点的名称，另一个函数<code>link</code>设定的<code>URL</code>地址。<br>(2)<code>big</code>函数：将字体加到一号，与…标签结果相同。<br>(3)<code>blink</code>函数：使字符串闪烁，与…标签结果相同。<br>(4)<code>bold</code>函数：使字体加粗，与…标签结果相同。<br>(5)<code>charAt</code>函数：返回字符串中指定的某个字符。<br>(6)<code>fixed</code>函数：将字体设定为固定宽度字体，与…标签结果相同。<br>(7)<code>fontcolor</code>函数：设定字体颜色，与标签结果相同。<br>(8)<code>fontsize</code>函数：设定字体大小，与标签结果相同。<br>(9)<code>indexOf</code>函数：返回字符串中第一个查找到的下标index，从左边开始查找。<br>(10)<code>italics</code>函数：使字体成为斜体字，与…标签结果相同。<br>(11)<code>lastIndexOf</code>函数：返回字符串中第一个查找到的下标index，从右边开始查找。<br>(12)<code>length</code>函数：返回字符串的长度。(不用带括号)<br>(13)<code>link</code>函数：产生一个超级链接，相当于设定的URL地址。<br>(14)<code>small</code>函数：将字体减小一号，与…标签结果相同。<br>(15)<code>strike</code>函数：在文本的中间加一条横线，与…标签结果相同。<br>(16)<code>sub</code>函数：显示字符串为下标字(subscript)。<br>(17)<code>substring</code>函数：返回字符串中指定的几个字符。<br>(18)<code>sup</code>函数：显示字符串为上标字(superscript)。<br>(19)<code>toLowerCase</code>函数：将字符串转换为小写。<br>(20)<code>toUpperCase</code>函数：将字符串转换为大写。<br>(22)<code>trim</code>函数：去掉字符串的前后空格。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" data-id="cldeb708m00000484apdtefpi" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -1168,15 +1168,15 @@
       <ul>
         
           <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/">第二周web学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
           </li>
         
           <li>
             <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
           </li>
         
           <li>
