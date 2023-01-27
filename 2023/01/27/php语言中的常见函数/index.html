@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="php语言中的常见函数1. 查找字符位置函数 strpos($str,search,[int]): 查找search在$str中的第一次位置从int开始 stripos($str,search,[int]): 函数返回字符串在另一个字符串中第一次出现的位置 strrpos($str,search,[int]): 查找search在$str中的最后一次出现的位置从int 2. 提取子字符函数(双字节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="php语言中的常见函数1. 查找字符位置函数 strpos($str,search,[int]): 查找search在$str中的第一次位置从int开始 stripos($str,search,[int]): 函数返回字符串在另一个字符串中第一次出现的位置 strrpos($str,search,[int]): 查找search在$str中的最后一次出现的位置从int 2. 提取子字符函数(双字节">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-27T09:14:41.083Z">
+<meta property="article:modified_time" content="2023-01-27T09:14:41.083Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-php语言中的常见函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T09:14:41.083Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="php语言中的常见函数"><a href="#php语言中的常见函数" class="headerlink" title="php语言中的常见函数"></a>php语言中的常见函数</h1><p><strong>1. 查找字符位置函数</strong></p>
+<p>strpos($str,search,[int]): 查找search在$str中的第一次位置从int开始</p>
+<p>stripos($str,search,[int]): 函数返回字符串在另一个字符串中第一次出现的位置</p>
+<p>strrpos($str,search,[int]): 查找search在$str中的最后一次出现的位置从int</p>
+<p><strong>2. 提取子字符函数(双字节)</strong></p>
+<p>submit($str,int start[,int length]): 从$str中strat位置开始提取[length长度的字符串]。</p>
+<p>strstr($str1,$str2): 从$str1(第一个的位置)搜索$str2并从它开始截取到结束字符串;若没有则返回FALSE。</p>
+<p>stristr() 功能同strstr，只是不区分大小写。</p>
+<p>strrchr() 从最后一次搜索到的字符处返回;用处：取路径中文件名</p>
+<p><strong>3. 替换字符串的PHP字符串函数</strong></p>
+<p>str_replace(search,replace,$str): 从$str中查找search用replace来替换</p>
+<p>str_irreplace(search,replace,$str):</p>
+<p>strtr($str,search,replace): 这个函数中replace不能为””;</p>
+<p>substr_replace($Str,$rep,$start[,length]) $str原始字符串,$rep替换后的新字符串,$start起始位置,$length替换的长度，该项可选</p>
+<p><strong>4. 字符长度</strong></p>
+<p>int strlen($str)： 受字符集限制</p>
+<p><strong>5. 比较字符函数</strong></p>
+<p>int strcmp($str1,$str2): $str1&gt;&#x3D;&lt;$str2分别为正1,0,-1(字符串比较)</p>
+<p>strcasecmp() 同上(不分大小写)</p>
+<p>strnatcmp(“4″,”14″) 按自然排序比较字符串</p>
+<p>strnatcasecmp() 同上，(区分大小写)</p>
+<p><strong>6. 分割成数组的PHP字符串函数</strong></p>
+<p>str_split($str,len): 把$str按len长度进行分割返回数组</p>
+<p>split(search,$str[,int]): 把$str按search字符进行分割返回数组int是分割几次，后面的将不分割</p>
+<p>expload(search,$str[,int])</p>
+<p><strong>7. 去除空格</strong></p>
+<p>ltrim、rtrim、trim</p>
+<p><strong>8. HTML代码有关函数</strong></p>
+<p>nl2br()： 使n转换为。</p>
+<p>strip_tags($str[,’’])： 去除HTML和PHP标记.在$str中所有HTML和PHP代码将被去除，可选参数为html和PHP代码作用是将保留</p>
+<p>如：echo strip_tags($text, ”);</p>
+<p>htmlspecialchars($str[,参数]):页面正常输出HTML代码参数是转换方式</p>
+<p><strong>9. 字符大小写转换的PHP字符串函数</strong></p>
+<p>strtolower($str): 字符串转换为小写</p>
+<p>strtoupper($str): 字符串转换为大写</p>
+<p>ucfirst($str): 将函数的第一个字符转换为大写</p>
+<p>ucwords($str): 将每个单词的首字母转换为大写</p>
+<p><strong>10.数据库相关的</strong></p>
+<p>addslashes($str)：使str内单引号(¹)、双引号(“)、反斜线()与 NUL字符串转换为¹,”,\。</p>
+<p>magic_quotes_gpc &#x3D; On 自动对 get post cookie的内容进行转义</p>
+<p>get_magic_quotes_gpc()检测是否打开magic_quotes_gpc</p>
+<p>stripslashes() 去除字符串中的反斜杠</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>AddSlashes: 字符串加入斜线。</p>
+<p>bin2hex: 二进位转成十六进位。</p>
+<p>Chop: 去除连续空白。</p>
+<p>Chr: 返回序数值的字符。</p>
+<p>chunk_split: 将字符串分成小段。</p>
+<p>convert_cyr_string: 转换成其它字符串。</p>
+<p>crypt: 将字符串用 DES 编码加密。</p>
+<p>echo: 输出字符串。</p>
+<p>explode: 切开字符串。</p>
+<p>flush: 清出输出缓冲区。</p>
+<p>get_meta_tags: 抽出文件所有 meta 标记的资料。</p>
+<p>htmlspecialchars: 将特殊字符转成 HTML 格式。</p>
+<p>htmlentities: 将所有的字符都转成 HTML 字符串。</p>
+<p>implode: 将数组变成字符串。</p>
+<p>join: 将数组变成字符串。</p>
+<p>ltrim: 去除连续空白。</p>
+<p>md5: 计算字符串的 MD5 哈稀。</p>
+<p>nl2br: 将换行字符转成。</p>
+<p>Ord: 返回字符的序数值。</p>
+<p>parse_str: 解析 query 字符串成变量。</p>
+<p>print: 输出字符串。</p>
+<p>printf: 输出格式化字符串。</p>
+<p>quoted_printable_decode： 将 qp 编码字符串转成 8 位字符串。</p>
+<p>QuoteMeta: 加入引用符号。</p>
+<p>rawurldecode: 从 URL 专用格式字符串还原成普通字符串。</p>
+<p>rawurlencode: 将字符串编码成 URL 专用格式。</p>
+<p>setlocale: 配置地域化信息。</p>
+<p>similar_text: 计算字符串相似度。</p>
+<p>soundex: 计算字符串的读音值</p>
+<p>sprintf: 将字符串格式化。</p>
+<p>strchr: 寻找第一个出现的字符。</p>
+<p>strcmp: 字符串比较。</p>
+<p>strcspn: 不同字符串的长度。</p>
+<p>strip_tags: 去掉 HTML 及 PHP 的标记。</p>
+<p>StripSlashes: 去掉反斜线字符。</p>
+<p>strlen: 取得字符串长度。</p>
+<p>strrpos: 寻找字符串中某字符最后出现处。</p>
+<p>strpos: 寻找字符串中某字符最先出现处。</p>
+<p>strrchr: 取得某字符最后出现处起的字符串。</p>
+<p>strrev: 颠倒字符串。</p>
+<p>strspn: 找出某字符串落在另一字符串遮罩的数目。</p>
+<p>strstr: 返回字符串中某字符串开始处至结束的字符串。</p>
+<p>strtok: 切开字符串。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" data-id="cldeb708p000104848nvoc3fy" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">第二周web学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">第一次web培训笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/23/%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BD%9C%E4%B8%9Awp/">第二周作业wp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
