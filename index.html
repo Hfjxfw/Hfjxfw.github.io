@@ -71,6 +71,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP命令执行漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time class="dt-published" datetime="2023-02-04T16:12:02.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="PHP命令执行漏洞"><a href="#PHP命令执行漏洞" class="headerlink" title="PHP命令执行漏洞"></a>PHP命令执行漏洞</h1><h4 id="1-什么是命令执行"><a href="#1-什么是命令执行" class="headerlink" title="1.什么是命令执行"></a>1.什么是命令执行</h4><h4 id="2-命令执行的思路准备"><a href="#2-命令执行的思路准备" class="headerlink" title="2.命令执行的思路准备"></a>2.命令执行的思路准备</h4><h4 id="3-常用的危险函数与作用"><a href="#3-常用的危险函数与作用" class="headerlink" title="3.常用的危险函数与作用"></a>3.常用的危险函数与作用</h4><h4 id="4-常见的过滤函数与作用"><a href="#4-常见的过滤函数与作用" class="headerlink" title="4.常见的过滤函数与作用"></a>4.常见的过滤函数与作用</h4><ul>
+<li></li>
+<li></li>
+</ul>
+<h5 id=""><a href="#" class="headerlink" title="*"></a>*</h5><h5 id="一，命令执行漏洞"><a href="#一，命令执行漏洞" class="headerlink" title="一，命令执行漏洞"></a>一，命令执行漏洞</h5><p>  直接在web应用中执行系统命令，从而获取敏感信息或者拿下shell权限。</p>
+<h5 id="二，思路与准备"><a href="#二，思路与准备" class="headerlink" title="二，思路与准备"></a>二，思路与准备</h5><ol>
+<li>用户能够控制函数输入</li>
+<li>存在可执行命令的危险函数</li>
+<li>火狐以及HackBar的插件</li>
+</ol>
+<h5 id="三，常用的危险函数"><a href="#三，常用的危险函数" class="headerlink" title="三，常用的危险函数"></a>三，常用的危险函数</h5><ul>
+<li><p>[system()和passthru()]</p>
+</li>
+<li><p>[exec()]</p>
+</li>
+<li><p>[shell_exec()]</p>
+</li>
+</ul>
+<p>​                       </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" data-id="cldqz75pm0000xw849479465e" data-title="PHP命令执行漏洞" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第一次misc培训笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -411,6 +468,10 @@
 <p>同样的，<code>SCHEMATA</code>表下存放的是所有数据库的名字，<code>SCHEMA_NAME</code>即为库名</p>
 <p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301271655300.png" alt="image-20230119121505765"></p>
 <p>在查询语句中查询指定数据库的指定表通过<code>库名.表名</code>的形式来查询</p>
+<h1 id="尝试SQL注入"><a href="#尝试SQL注入" class="headerlink" title="尝试SQL注入"></a><strong>尝试SQL注入</strong></h1><p>?id&#x3D;1’ and 1&#x3D;1– -</p>
+<p>?id&#x3D;1’ and 1&#x3D;2– -</p>
+<p>?id&#x3D;1’ or 1&#x3D;2– -</p>
+<p>?id&#x3D;1’ or 1&#x3D;1– -</p>
 
       
     </div>
@@ -1317,7 +1378,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
     </div>
   </div>
 
@@ -1328,6 +1389,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
+          </li>
         
           <li>
             <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
@@ -1343,10 +1408,6 @@
         
           <li>
             <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/26/%E7%AC%AC%E4%B8%80%E6%AC%A1web%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">第一次web培训笔记</a>
           </li>
         
       </ul>
