@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>图片隐写 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、图片隐写的常见隐写方法ps：图片格式特征  GIF图多帧隐藏  1.颜色通道隐藏 不同帧图信息隐藏 不同帧对比隐写 Exif信息隐藏 图片修复  1.图片头修复 图片尾修复  3.CRC校验修复4.最低有效位LSB隐写一，图片的格式BMP文件头 42 4D  题型：bmp文件的识别，图片的高度修改 （bmp文件头冗余隐写，数据区隐写（alpha通道，数据覆盖，尾部追加隐写） JPG文件头：FF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片隐写">
+<meta property="og:url" content="http://example.com/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、图片隐写的常见隐写方法ps：图片格式特征  GIF图多帧隐藏  1.颜色通道隐藏 不同帧图信息隐藏 不同帧对比隐写 Exif信息隐藏 图片修复  1.图片头修复 图片尾修复  3.CRC校验修复4.最低有效位LSB隐写一，图片的格式BMP文件头 42 4D  题型：bmp文件的识别，图片的高度修改 （bmp文件头冗余隐写，数据区隐写（alpha通道，数据覆盖，尾部追加隐写） JPG文件头：FF">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150523.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150329.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151440.bmp">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151030.png">
+<meta property="article:published_time" content="2023-02-05T09:04:47.000Z">
+<meta property="article:modified_time" content="2023-02-06T13:53:59.369Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150483.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-图片隐写" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:04:47.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      图片隐写
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、图片隐写的常见隐写方法"><a href="#一、图片隐写的常见隐写方法" class="headerlink" title="一、图片隐写的常见隐写方法"></a>一、图片隐写的常见隐写方法</h1><p><strong>ps：图片格式特征</strong></p>
+<ol>
+<li><h4 id="GIF图多帧隐藏"><a href="#GIF图多帧隐藏" class="headerlink" title="GIF图多帧隐藏"></a>GIF图多帧隐藏</h4></li>
+</ol>
+<h4 id="1-颜色通道隐藏"><a href="#1-颜色通道隐藏" class="headerlink" title="1.颜色通道隐藏"></a>1.颜色通道隐藏</h4><ol start="2">
+<li><h4 id="不同帧图信息隐藏"><a href="#不同帧图信息隐藏" class="headerlink" title="不同帧图信息隐藏"></a>不同帧图信息隐藏</h4></li>
+<li><h4 id="不同帧对比隐写"><a href="#不同帧对比隐写" class="headerlink" title="不同帧对比隐写"></a>不同帧对比隐写</h4></li>
+<li><h4 id="Exif信息隐藏"><a href="#Exif信息隐藏" class="headerlink" title="Exif信息隐藏"></a>Exif信息隐藏</h4></li>
+<li><h4 id="图片修复"><a href="#图片修复" class="headerlink" title="图片修复"></a>图片修复</h4></li>
+</ol>
+<h4 id="1-图片头修复"><a href="#1-图片头修复" class="headerlink" title="1.图片头修复"></a>1.图片头修复</h4><ol start="6">
+<li><h4 id="图片尾修复"><a href="#图片尾修复" class="headerlink" title="图片尾修复"></a>图片尾修复</h4></li>
+</ol>
+<h4 id="3-CRC校验修复"><a href="#3-CRC校验修复" class="headerlink" title="3.CRC校验修复"></a>3.CRC校验修复</h4><h4 id="4-最低有效位LSB隐写"><a href="#4-最低有效位LSB隐写" class="headerlink" title="4.最低有效位LSB隐写"></a>4.最低有效位LSB隐写</h4><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h5 id="一，图片的格式"><a href="#一，图片的格式" class="headerlink" title="一，图片的格式"></a>一，图片的格式</h5><h1 id="BMP"><a href="#BMP" class="headerlink" title="BMP"></a>BMP</h1><p><strong>文件头</strong></p>
+<p><strong>42 4D</strong></p>
+<p><strong><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150483.png" alt="img"></strong></p>
+<p>题型：bmp文件的识别，图片的高度修改 （bmp文件头冗余隐写，数据区隐写（alpha通道，数据覆盖，尾部追加隐写）</p>
+<h1 id="JPG"><a href="#JPG" class="headerlink" title="JPG"></a>JPG</h1><p><strong>文件头：FF D8      文件尾FF D9</strong></p>
+<p>题型：查看图片属性，图片高度修改，文件中存在冗余字节（在文件头尾存在字符串），图片压缩包分离</p>
+<h1 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h1><p><strong>开始标志：89 50 4E 47 0D 0A 1A 0A</strong></p>
+<p><strong>结束标记：AE 42 60 82</strong></p>
+<p>题型：IHDR隐写（图片高宽度的修改，CRC爆破） IDAT 隐写 ，crc校验错误可以被010显示（crc.py解）</p>
+<h1 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h1><p>题型：逐帧查看， 分离合并</p>
+<h1 id="一，GIF图多帧隐藏"><a href="#一，GIF图多帧隐藏" class="headerlink" title="一，GIF图多帧隐藏"></a>一，GIF图多帧隐藏</h1><p><strong>stegsolve.jar 工具</strong></p>
+<p>打开图片后发现图片不断闪动，隐约可以看到flag，使用stegsolve.jar 工具查看</p>
+<h1 id="二，Exif信息隐藏"><a href="#二，Exif信息隐藏" class="headerlink" title="二，Exif信息隐藏"></a>二，Exif信息隐藏</h1><p>右键查看图片属性。。。。。</p>
+<h1 id="三，图片修复"><a href="#三，图片修复" class="headerlink" title="三，图片修复"></a>三，图片修复</h1><h2 id="1，图片头尾修复"><a href="#1，图片头尾修复" class="headerlink" title="1，图片头尾修复"></a>1，图片头尾修复</h2><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150523.png" alt="img"></p>
+<p>题目中提示图片修复或者图片无法打开，010查看文件头，照着正确的文件头修改。</p>
+<p><strong>图片尾</strong></p>
+<p>zip文件的结尾以一串504B0506开始</p>
+<p>JPG文件结尾为FFD9。</p>
+<p>PNG文件 结尾为000049454E44AE426082。</p>
+<p>Gif文件结尾为3B。</p>
+<p><strong>CRC校验修复</strong></p>
+<p>这个东西010会提示</p>
+<p><strong>LSB加密</strong></p>
+<p>这个也没多难，用工具就可以</p>
+<h1 id="题目训练"><a href="#题目训练" class="headerlink" title="题目训练"></a>题目训练</h1><h3 id="金三胖（buuctf"><a href="#金三胖（buuctf" class="headerlink" title="金三胖（buuctf)"></a>金三胖（buuctf)</h3><p>注意：得到的 flag 请包上 flag{} 提交</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150329.gif" alt="aaa"></p>
+<h5 id="解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve-jar"><a href="#解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve-jar" class="headerlink" title="解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve.jar"></a>解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve.jar</h5><h5 id="解题：使用stegsolve-jar-的farme功能逐帧查看GIF，得到flag-he11ohongke"><a href="#解题：使用stegsolve-jar-的farme功能逐帧查看GIF，得到flag-he11ohongke" class="headerlink" title="解题：使用stegsolve.jar 的farme功能逐帧查看GIF，得到flag{he11ohongke}"></a>解题：使用stegsolve.jar 的farme功能逐帧查看GIF，得到flag{he11ohongke}</h5><h2 id="大白（buuctf"><a href="#大白（buuctf" class="headerlink" title="大白（buuctf)"></a>大白（buuctf)</h2><p>看不到图？ 是不是屏幕太小了 注意：得到的 flag 请包上 flag{} 提交</p>
+<h5 id="解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。"><a href="#解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。" class="headerlink" title="解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。"></a>解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。</h5><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151440.bmp" alt="capture_20230206143753132"></p>
+<h5 id="解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag"><a href="#解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag" class="headerlink" title="解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag"></a>解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag</h5><p>flag{He1l0_d4_ba1}</p>
+<h2 id="ningen（buuctf"><a href="#ningen（buuctf" class="headerlink" title="ningen（buuctf)"></a>ningen（buuctf)</h2><p>人类的科学日益发展，对自然的研究依然无法满足，传闻日本科学家秋明重组了基因序列，造出了名为ningen的超自然生物。某天特工小明偶然截获了日本与俄罗斯的秘密通信，文件就是一张ningen的特写，小明通过社工，知道了秋明特别讨厌中国的六位银行密码，喜欢四位数。你能找出黑暗科学家秋明的秘密么？ 注意：得到的 flag 请包上 flag{} 提交</p>
+<h5 id="解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密"><a href="#解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密" class="headerlink" title="解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密"></a>解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密</h5><h5 id="解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离"><a href="#解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离" class="headerlink" title="解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离"></a>解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离</h5><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151030.png" alt="在这里插入图片描述"></p>
+<p>得到一个zip的加密压缩文件，题目提示为四位数密码，使用zip爆破出密码8683，然后得到flag</p>
+<p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
+<h2 id="Gradient-sky"><a href="#Gradient-sky" class="headerlink" title="Gradient sky"></a>Gradient sky</h2><p>题目描述：Gradient sky is a begginer level ctf challenge which is aimed towards rookies.</p>
+<p>这个就010打开直接flag   <strong>csictf{j0ker_w4snt_happy}</strong></p>
+<p>。。。。。。</p>
+<h2 id="相机制造商"><a href="#相机制造商" class="headerlink" title="相机制造商"></a>相机制造商</h2><p>题目描述：这张图片看上去像素不错啊。摄影师是用什么厂商的相机拍出来的呢</p>
+<p>这个就010打开直接flag   <strong>Flag{6MO3Nbdad7umkHmQ}</strong></p>
+<p>。。。。。。。就很。。。。。。。</p>
+<h2 id="图片修复-1"><a href="#图片修复-1" class="headerlink" title="图片修复"></a>图片修复</h2><p>GIF的文件头修复，这里使用010时要先插入00字节在进行修改，修改完后逐帧查看得到flag <strong>Flag{fxiZHXePJ}</strong></p>
+<p>。。。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" data-id="cldsvjr5j00026c847cmi8mbo" data-title="图片隐写" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一句话木马与文件上传
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">crc校验与压缩包</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

