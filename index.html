@@ -71,6 +71,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP反序列化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/07/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2023-02-07T08:15:19.000Z" itemprop="datePublished">2023-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/07/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">PHP反序列化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1><p><strong>序列化（串行化）</strong>：是将变量转换为可保存或传输的字符串的过程；<br><strong>反序列化（反串行化）</strong>：就是在适当的时候把这个字符串再转化成原来的变量使用；<br>这两个过程结合起来，可以轻松地存储和传输数据，使程序更具维护性；<br>常见的php序列化和反序列化方式主要有：<strong>serialize，unserialize</strong></p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302071721990.png" alt="img"></p>
+<h3 id="关于php面向对象编程："><a href="#关于php面向对象编程：" class="headerlink" title="关于php面向对象编程："></a>关于php面向对象编程：</h3><p><strong>对象：</strong>可以对其做事情的一些东西。一个对象有状态、行为和标识三种属性。<br><strong>类</strong>：一个共享相同结构和行为的对象的集合。<br>每个类的定义都以关键字class开头，后面跟着类的名字。一个类可以包含有属于自己的变量，变量（称为“属性”）以及函数（“称为方法”）。类可能会包含一些特殊的函数叫magic函数，magic函数命名是以符号“_”开头的，比如_sleep,_wakeup等。这些函数在某些情况下会自动调用，比如：_construct当一个对象创建时调用（constructor）；_destruct当一个对象被销毁时调用（destructor）；_toString当一个对象被当作一个字符串时使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class TestClass</span><br><span class="line">&#123;</span><br><span class="line">//一个变量</span><br><span class="line">public $variable = &#x27;This is a string&#x27;;</span><br><span class="line">//一个简单的方法</span><br><span class="line">public function PrintVariable()</span><br><span class="line">&#123;</span><br><span class="line">echo $this-&gt;variable;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">//创建一个对象</span><br><span class="line">$object = new TestClass();</span><br><span class="line">//调用一个方法</span><br><span class="line">$object-&gt;PrintVariable();</span><br><span class="line">?&gt;</span><br><span class="line">//test.php</span><br></pre></td></tr></table></figure>
+
+<h3 id="反序列化中常见的魔术方法"><a href="#反序列化中常见的魔术方法" class="headerlink" title="反序列化中常见的魔术方法"></a>反序列化中常见的魔术方法</h3><p>__construct()，类的构造函数<br>__destruct()，类的析构函数<br>__call()，在对象中调用一个不可访问方法时调用<br>__callStatic()，用静态方式中调用一个不可访问方法时调用<br>__get()，获得一个类的成员变量时调用<br>__set()，设置一个类的成员变量时调用<br>__isset()，当对不可访问属性调用isset()或empty()时调用<br>__unset()，当对不可访问属性调用unset()时被调用<br>__sleep()，执行serialize()时，先会调用这个函数<br>__wakeup()，执行unserialize()时，先会调用这个函数<br>__toString()，类被当成字符串时的回应方法<br>__invoke()，调用函数的方式调用一个对象时的回应方法<br>__set_state()，调用var_export()导出类时，此静态方法会被调用<br>__clone()，当对象复制完成时调用<br>__autoload()，尝试加载未定义的类<br>__debugInfo()，打印所需调试信息反序列化绕过</p>
+<h2 id="protected和private绕过"><a href="#protected和private绕过" class="headerlink" title="protected和private绕过"></a>protected和private绕过</h2><p>PS：如果变量前是protected，则是\x00*\x00类名的形式<br>         如果变量前是private，则是\x00类名\x00的形式</p>
+<p>绕过：<br>①：php7.1+反序列化对类属性不敏感，将protected改成public<br>②：手动将序列化后的形式改为protected或者private的标准形式，结合urlencode和base64编码进行操作</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302071721447.png" alt="img"></p>
+<h2 id="wakeup绕过"><a href="#wakeup绕过" class="headerlink" title="__wakeup绕过"></a>__wakeup绕过</h2><p>ps：<br>当序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup 的执行<br>示例：<br><code>O:4:&quot;Dino&quot;:***\*1\****:&#123;s:1:&quot;a&quot;;s:4:&quot;misc&quot;;&#125;</code>改为<code>O:4:&quot;Dino&quot;:***\*2\****:&#123;s:1:&quot;a&quot;;s:4:&quot;misc&quot;;&#125;</code></p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302071721726.png" alt="img"></p>
+<p><strong>通过值的引用可以使$a的值与$b的值相等</strong></p>
+<h2 id="利用16进制绕过字符过滤"><a href="#利用16进制绕过字符过滤" class="headerlink" title="利用16进制绕过字符过滤"></a>利用16进制绕过字符过滤</h2><p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302071721992.png" alt="img"></p>
+<p>序列化结果：<code>O:4:&quot;Dino&quot;:1:&#123;s:3:&quot;way&quot;;s:3:&quot;web&quot;;&#125;</code>中含有字符web，但将s改成S后，<code>O:4:&quot;Dino&quot;:1:&#123;S:3:&quot;\\77ay&quot;;s:3:&quot;web&quot;;&#125;</code>利用十六进制绕过了字符的过滤检测</p>
+<h1 id="题目练习"><a href="#题目练习" class="headerlink" title="题目练习"></a>题目练习</h1><h3 id="unserialize3"><a href="#unserialize3" class="headerlink" title="unserialize3"></a>unserialize3</h3><p>题目描述:暂无</p>
+<p>思路：__wakeup绕过当序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup 的执行<br>解题：发现是一个__wakeup绕过的题型，在在线网站进行反序列化<a target="_blank" rel="noopener" href="https://code.y444.cn/php">PHP在线运行工具|代码在线运行工具</a></p>
+<p>计算一下结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> </span><br><span class="line">class xctf&#123;                      //定义一个名为xctf的类</span><br><span class="line"> </span><br><span class="line">public $flag = &#x27;111&#x27;;            //定义一个公有的类属性$flag，值为111</span><br><span class="line"> </span><br><span class="line">public function __wakeup()&#123;      //定义一个公有的类方法__wakeup()，输出bad requests后退出当前脚本</span><br><span class="line"> </span><br><span class="line">exit(&#x27;bad requests&#x27;);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">$test = new xctf();           //使用new运算符来实例化该类（xctf）的对象为test</span><br><span class="line"> </span><br><span class="line">echo(serialize($test));       //输出被序列化的对象（test）</span><br><span class="line"> </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>得到反序列化的结果O:4:”xctf”:1:{s:4:”flag”;s:3:”111”;}，上传得到flag</p>
+<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202302071721561.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/07/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="cldu1c1de00004w84hio4cmr0" data-title="PHP反序列化" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-一句话木马与文件上传" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
@@ -1633,79 +1692,6 @@
 
 
   
-    <article id="post-第二周作业wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/23/%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BD%9C%E4%B8%9Awp/" class="article-date">
-  <time class="dt-published" datetime="2023-01-23T13:03:51.000Z" itemprop="datePublished">2023-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/23/%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BD%9C%E4%B8%9Awp/">第二周作业wp</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="第二周作业"><a href="#第二周作业" class="headerlink" title="第二周作业"></a>第二周作业</h1><p><strong>题目来源：攻防世界 simple_php、easyphp、PHP2</strong></p>
-<h2 id="第一题（simple-php）"><a href="#第一题（simple-php）" class="headerlink" title="第一题（simple_php）"></a>第一题（simple_php）</h2><p>首先第一步还是先看题目描述：</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958548.bmp" alt="capture_20230123210938193"></p>
-<p>看到php是最好的语言（确实啊），然后她写了几行简单的代码，由题目看出来应该是简单的代码审计，我们就打开她的网站。</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958263.bmp" alt="capture_20230123211438342"></p>
-<p>。</p>
-<p><strong>一，</strong>我们先来看代码，include()表示它包含的头文件，$a&#x3D;&#x2F;$b表示url可以接受a，b的值，接着看最重要的if条件语句，当条件同时成立的时候才会出flag，第一个条件是a&#x3D;0或者a&#x3D;a，php是弱类型语言，当字符串和数字比较时，自动将字符串转化为数值，<strong>及1abc&#x3D;&#x3D;1为真，但是abc1&#x3D;&#x3D;1为假，也就是说abc1被转换为0</strong>，所以呢$a应该等于一个纯字母或者字母加数字，但是数字不能在首位。</p>
-<p><strong>二，</strong>来看b的条件语句，其中用到了is_numeric（）的函数，通过查询可以知道，该函数是判断是否为纯数字，若为纯数字就直接退出，所以b不能为纯数字而且b要大于1234，然后我们修改一下IP地址，将以上总结的条件添加上去，得到flag</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261959581.bmp" alt="capture_20230125223531690"></p>
-<h2 id="第二题（php2）"><a href="#第二题（php2）" class="headerlink" title="第二题（php2）"></a>第二题（php2）</h2><p>首先我们还是打开题目网站，但是发现页面只有一句话“你能登陆这个网站吗？”，开始我还是考虑查看网页源码</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958883.bmp" alt="capture_20230125224139648"></p>
-<p>发现也是什么都没有，然后通过多方查询发现了这样一句话：<strong>“phps文件就是php的源代码文件，通常用于提供给用户（访问者）直接通过Web浏览器查看php代码的内容。因为用户无法直接通过Web浏览器“看到”php文件的内容，所以需要用phps文件代替。”</strong>接着我又发现一个叫做<strong>御剑</strong>的后台扫描软件，然后直接安装开始运行，选用PHP的字典进行扫描，得到了这样的结果</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958814.png" alt="image-20230125225010546"></p>
-<p>根据上面那段话，我们直接打开含phps的地址，就如愿的得到了网页源码</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958417.bmp" alt="capture_20230125225201815"></p>
-<p>主要还是看if条件语句，这里看到了一个新东西，**$_GET 变量用于接收表单 method&#x3D;&quot;get&quot; 方式发送的表单信息。**就相当于一个水壶，可以接受表单中的“水”，这里是一个数组，id是变量。</p>
-<p><strong>一，</strong>第一个if条件语句表示id这个变量不能是admin，否则就显示“not allow”，这个很简单。</p>
-<p><strong>二，</strong>这里出现了一个函数，通过查询后，urldecode（）函数是将内容进行url解码，意思就是id解码后要等于admin，<strong>但是这里有一个非常重要的的问题，浏览器打开网站是会自动url解码</strong>，也就是说admin进行了两次url解码，要是if语句成立，需要将admin进行两次url编码。</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958626.bmp" alt="capture_20230126000155749"></p>
-<p>二次编码后得到了一串16进制的加密密文，然后老样子把id赋值为密文，得到key也就是flag。</p>
-<p><img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958519.bmp" alt="capture_20230126000639030"></p>
-<p><strong>注意要在后缀为PHP的IP地址后面加，同时赋值格式为？id&#x3D;而不是&#x2F;？id&#x3D;</strong></p>
-<h2 id="第三题（easyPHP）"><a href="#第三题（easyPHP）" class="headerlink" title="第三题（easyPHP）"></a>第三题（easyPHP）</h2><p>首先还是打开题目网站<img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958751.bmp" alt="capture_20230126152645963"></p>
-<p>看到key就知道要同时满足两个条件语句才可以出flag。</p>
-<p><strong>一，</strong>if(isset($a) &amp;&amp; intval($a) &gt; 6000000 &amp;&amp; strlen($a) &lt;&#x3D; 3)，其中有三个函数 isset：检查变量是否设置，intval：检查变量是否为int型</p>
-<p>strlen：检查变量的长度。其要求就是a要大于6000000而且a的长度不能超过3，这个时候就用科学计数法9e9就可以。</p>
-<p><strong>二，</strong>if(isset($b) &amp;&amp; ‘8b184b’ &#x3D;&#x3D;&#x3D; substr(md5($b),-6,6))，substr（）函数用于截取字符串，MD5（）计算MD5的散列，然后直接把它放在VSC里面跑一下，得到了b&#x3D;53724</p>
-<p><strong>三，</strong>$c&#x3D;(array)json_decode(@$_GET[‘c’]);，构建一个c的数组将其json_decode，<strong>将json转化为PHP的变量</strong></p>
-<p>if(is_array($c) &amp;&amp; !is_numeric(@$c[“m”]) &amp;&amp; $c[“m”] &gt; 2022)，c必须是一个数组，m的内容不能为纯数字，还要大于2022，</p>
-<p> if(is_array(@$c[“n”]) &amp;&amp; count($c[“n”]) &#x3D;&#x3D; 2 &amp;&amp; is_array($c[“n”][0]))，<strong>count（）函数，计算数组的单元个数</strong>及n中的键值为2且n的第一个键值为数组。</p>
-<p>综上所述的a&#x3D;9e9&amp;b&#x3D;53724&amp;c&#x3D;{“m”:”2023a”,”n”:[[],0]}得到flag</p>
-<p>![capture_20230126191150834](D:\My Blog\source_posts\第二周作业wp.assets\capture_20230126191150834.bmp)</p>
-<p>还有一点重要的<img src="https://raw.githubusercontent.com/Hfjxfw/Hfjxfw/main/202301261958520.bmp" alt="capture_20230126193833728"></p>
-<p>array_search()函数用于查找指定的字符，找到就返回键名，失败则返回false，但是数组里不包含”DGGJ“，则用php的弱类型比较，</p>
-<p>0&#x3D;&#x3D;”DGGJ“且0&#x3D;&#x3D;&#x3D;”DGGJ“为false，所以数组里包含0.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/23/%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BD%9C%E4%B8%9Awp/" data-id="clde60eil0002go8453t4fv7p" data-title="第二周作业wp" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1742,6 +1728,10 @@
       <ul>
         
           <li>
+            <a href="/2023/02/07/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">PHP反序列化</a>
+          </li>
+        
+          <li>
             <a href="/2023/02/05/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%8E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">一句话木马与文件上传</a>
           </li>
         
@@ -1755,10 +1745,6 @@
         
           <li>
             <a href="/2023/02/05/PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">PHP命令执行漏洞</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/27/%E7%AC%AC%E4%B8%80%E6%AC%A1misc%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/">(no title)</a>
           </li>
         
       </ul>
